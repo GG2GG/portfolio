@@ -7,8 +7,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required as GitHub Pages doesn't support Next.js Image Optimization
   },
-  // If your repo is NOT at the root (e.g. user.github.io/repo-name), you might need:
-  // basePath: "/portfolio", 
+  basePath: "/portfolio", // Required for project repository (https://username.github.io/portfolio)
 };
 
 export default nextConfig;
