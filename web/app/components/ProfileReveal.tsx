@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { getAssetPath } from '../utils/assets';
 
 export default function ProfileReveal() {
     const containerRef = useRef<HTMLDivElement>(null);
