@@ -26,8 +26,7 @@ export default function SplitText({ children, className }: { children: string, c
                     trigger: containerRef.current,
                     start: "top 80%",
                 }
-            },
-            { scope: containerRef }
+            }
         );
     }, { scope: containerRef });
 
