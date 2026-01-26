@@ -33,6 +33,7 @@ const Icons: Record<string, React.FC<{ className?: string }>> = {
 export default function ProcessTimeline() {
     const containerRef = useRef<HTMLDivElement>(null);
     const lineRef = useRef<HTMLDivElement>(null);
+    const lineRefs = useRef<any[]>([]); // Array of refs for connecting lines
 
     useGSAP(() => {
         if (!containerRef.current) return;
@@ -103,7 +104,7 @@ export default function ProcessTimeline() {
                 <div ref={lineRef} className="w-full bg-gradient-to-b from-[#ccff00] via-cyan-400 to-purple-500 shadow-[0_0_15px_rgba(204,255,0,0.5)]" style={{ height: '0%' }} />
             </div>
 
-            <div className="flex flex-col gap-12 md:gap-32 relative z-10 py-12">
+            <div className="flex flex-col gap-12 md:gap-20 relative z-10 py-12">
                 {roiContent.process.map((step, i) => {
                     const isEven = i % 2 === 0; // Even = Left Side (Desktop), Odd = Right Side (Desktop)
                     const Icon = Icons[step.icon as keyof typeof Icons] || Icons.compass;
@@ -183,10 +184,10 @@ function ProcessCard({ step, Icon, color, align }: { step: any, Icon: any, color
                     <Icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
                 <div>
-                    <h3 className="text-lg md:text-2xl font-black text-black mb-2 uppercase tracking-tight group-hover:text-[var(--step-color)] transition-colors">
+                    <h3 className="text-xl md:text-3xl font-black text-black mb-2 uppercase tracking-tight group-hover:text-[var(--step-color)] transition-colors">
                         {step.title}
                     </h3>
-                    <p className="text-zinc-600 font-medium leading-relaxed text-sm">
+                    <p className="text-zinc-600 font-medium leading-relaxed text-base">
                         {step.desc}
                     </p>
                 </div>
