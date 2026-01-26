@@ -102,7 +102,7 @@ export default function MissionCard({ mission, isActive }: MissionCardProps) {
                         <ScrambleText text="Mission Brief" reveal={isActive} />
                     </h4>
                     <p className="text-xl md:text-2xl text-white font-light leading-relaxed line-clamp-4">
-                        <ScrambleText text={mission.summary} reveal={isActive} />
+                        {mission.summary}
                     </p>
                 </div>
 
@@ -117,7 +117,7 @@ export default function MissionCard({ mission, isActive }: MissionCardProps) {
                             <li key={idx} className="flex items-start gap-3 group">
                                 <span className="text-teal-500/50 mt-1 font-mono text-xs shrink-0">{`>_`}</span>
                                 <span className="text-base md:text-lg text-zinc-300 font-light leading-snug group-hover:text-white transition-colors">
-                                    <ScrambleText text={item} reveal={isActive} />
+                                    {item}
                                 </span>
                             </li>
                         ))}
