@@ -171,6 +171,7 @@ export default function ProcessTimeline() {
 }
 
 // Sub-component for Cleaner Layout
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function ProcessCard({ step, Icon, color, align }: { step: any, Icon: any, color: string, align: 'left' | 'right' }) {
     return (
         <div

@@ -28,7 +28,9 @@ export default function MissionBackground({ progress = 0 }: MissionBackgroundPro
         if (rive && (scrollInput || progressInput)) {
             // Map 0-1 progress to 0-100 usually
             const value = progress * 100;
+            // eslint-disable-next-line react-hooks/immutability
             if (scrollInput) scrollInput.value = value;
+            // eslint-disable-next-line react-hooks/immutability
             if (progressInput) progressInput.value = value;
         }
     }, [progress, rive, scrollInput, progressInput]);

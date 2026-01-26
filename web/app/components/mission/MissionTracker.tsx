@@ -31,8 +31,11 @@ export default function MissionTracker({ progress, activeIndex }: MissionTracker
             // Map 0-1 progress to 0-100 charge
             const value = progress * 100;
 
+            // eslint-disable-next-line react-hooks/immutability
             if (chargeInput) chargeInput.value = value;
+            // eslint-disable-next-line react-hooks/immutability
             if (levelInput) levelInput.value = value;
+            // eslint-disable-next-line react-hooks/immutability
             if (progressInput) progressInput.value = value;
         }
     }, [progress, rive, chargeInput, levelInput, progressInput]);
