@@ -7,6 +7,9 @@ export const getAssetPath = (path: string) => {
     // Ensure path starts with /
     const normalizedPath = path.startsWith('/') ? path : `/${path}`;
 
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+    // Hardcode base path for GitHub Pages production build
+    const isProd = process.env.NODE_ENV === 'production';
+    const basePath = isProd ? '/portfolio' : '';
+
     return `${basePath}${normalizedPath}`;
 };
