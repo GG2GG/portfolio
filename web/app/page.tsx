@@ -30,7 +30,9 @@ export default function Home() {
   // Session Check (Skip Preloader on internal navigation)
   useEffect(() => {
     // Check if we've already loaded this session (persists on Nav, clears on Refresh)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (typeof window !== 'undefined' && (window as any)._hasSessionLoaded) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowPreloader(false);
       setIsLoaded(true);
     }

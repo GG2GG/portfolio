@@ -64,8 +64,120 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* 3. Beyond the Keyboard (Hobbies) */}
+            {/* 3. Services */}
             <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-900">
+                <div className="mb-16">
+                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-4">
+                        Beyond the <span className="text-zinc-700">Keyboard</span>
+                    </h2>
+                    <p className="text-xl md:text-2xl text-zinc-400 max-w-2xl leading-relaxed">
+                        I don&apos;t just manage products; I engineer their success through technical depth and strategic foresight.
+                    </p>
+                </div>
+
+                {/* Core Services Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32">
+
+                    {/* Service 1 */}
+                    <div className="group p-8 md:p-12 rounded-3xl bg-zinc-900/50 border border-zinc-800 hover:border-[#ccff00]/50 transition-colors relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                            <span className="text-6xl">🤖</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-4">AI & GenAI Product Strategy</h3>
+                        <p className="text-zinc-400 leading-relaxed mb-8">
+                            From RAG pipelines to fine-tuned LLMs. I translate &quot;AI Hype&quot; into deployed, revenue-generating features.
+                        </p>
+                        <ul className="space-y-2 text-sm font-mono text-zinc-500">
+                            <li>• Model Selection & Eval</li>
+                            <li>• Prompt Engineering Ops</li>
+                            <li>• Ethics & Safety Guardrails</li>
+                        </ul>
+                    </div>
+
+                    {/* Service 2 */}
+                    <div className="group p-8 md:p-12 rounded-3xl bg-zinc-900/50 border border-zinc-800 hover:border-[#ccff00]/50 transition-colors relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                            <span className="text-6xl">🚀</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-4">0-to-1 MVP Development</h3>
+                        <p className="text-zinc-400 leading-relaxed mb-8">
+                            I write the first lines of code and the last lines of the PRD. Speed is the feature.
+                        </p>
+                        <ul className="space-y-2 text-sm font-mono text-zinc-500">
+                            <li>• Rapid Prototyping (Next.js)</li>
+                            <li>• Market Validation</li>
+                            <li>• Scalable Architecture</li>
+                        </ul>
+                    </div>
+
+                    {/* Service 3 */}
+                    <div className="group p-8 md:p-12 rounded-3xl bg-zinc-900/50 border border-zinc-800 hover:border-[#ccff00]/50 transition-colors relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                            <span className="text-6xl">📊</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-4">Technical Program Management</h3>
+                        <p className="text-zinc-400 leading-relaxed mb-8">
+                            Aligning engineering reality with business dreams. I speak API, AWS, and OKR fluently.
+                        </p>
+                        <ul className="space-y-2 text-sm font-mono text-zinc-500">
+                            <li>• Cross-functional Leadership</li>
+                            <li>• System Design Review</li>
+                            <li>• Agile / scrum Mastery</li>
+                        </ul>
+                    </div>
+
+                    {/* Service 4 */}
+                    <div className="group p-8 md:p-12 rounded-3xl bg-zinc-900/50 border border-zinc-800 hover:border-[#ccff00]/50 transition-colors relative overflow-hidden">
+                        <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                            <span className="text-6xl">📈</span>
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-4">Growth Engineering</h3>
+                        <p className="text-zinc-400 leading-relaxed mb-8">
+                            Building loops, not just funnels. Optimizing for retention and LTV using data-driven experiments.
+                        </p>
+                        <ul className="space-y-2 text-sm font-mono text-zinc-500">
+                            <li>• A/B Testing Infrastructure</li>
+                            <li>• Analytics Implementation</li>
+                            <li>• User Onboarding Flows</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                {/* Why Me Section */}
+                <div className="mb-32 p-8 md:p-16 bg-[#ccff00] text-black rounded-3xl">
+                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 leading-[0.9]">
+                        Why work with me?
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div>
+                            <h4 className="font-bold text-xl mb-2">I Ship Code</h4>
+                            <p className="text-black/80 font-serif text-lg">
+                                You won&apos;t hear &quot;that&apos;s technically impossible&quot; without a proof of concept attached.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-xl mb-2">I Speak Engineer & Business</h4>
+                            <p className="text-black/80 font-serif text-lg">
+                                Fluent in both Jira tickets and investor decks. I bridge the gap, not widen it.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-xl mb-2">I'm a Force Multiplier</h4>
+                            <p className="text-black/80 font-serif text-lg">
+                                My goal isn&apos;t to just manage, but to elevate your team&apos;s capabilities and output.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-xl mb-2">I Get My Hands Dirty</h4>
+                            <p className="text-black/80 font-serif text-lg">
+                                From writing SQL queries to debugging APIs, I&apos;m in the trenches with the team.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Beyond the Keyboard (Hobbies) */}
                 <div className="mb-16">
                     <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-4">
                         Beyond the <span className="text-zinc-700">Keyboard</span>

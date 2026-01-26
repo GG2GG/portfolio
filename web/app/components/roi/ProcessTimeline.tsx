@@ -126,6 +126,12 @@ export default function ProcessTimeline() {
 
                             {/* 2. Center Spine Area (10%) */}
                             <div className="w-12 md:w-[10%] relative flex items-center justify-center shrink-0 h-12">
+                                {/* Connecting Line (Animated) */}
+                                <div
+                                    className="absolute left-[39px] top-20 bottom-0 w-[2px] bg-zinc-800 -z-10 origin-top transform-gpu"
+                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                                    ref={(el: any) => { lineRefs.current[i] = el; }}
+                                />
                                 {/* Central Dot on Spine */}
                                 <div
                                     className="process-dot absolute left-6 md:left-1/2 top-1/2 md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black border-2 rounded-full shadow-[0_0_15px_currentColor] z-30"

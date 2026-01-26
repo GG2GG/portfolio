@@ -3,11 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
-  output: "export",  // Required for Static Export (GitHub Pages)
+  output: "export",
   images: {
-    unoptimized: true, // Required as GitHub Pages doesn't support Next.js Image Optimization
+    unoptimized: true,
   },
-  basePath: "/portfolio", // Required for project repository (https://username.github.io/portfolio)
+  // Only use basePath for GitHub Pages deployment
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
 };
 
 export default nextConfig;
