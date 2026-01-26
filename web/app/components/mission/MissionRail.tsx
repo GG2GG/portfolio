@@ -1,0 +1,119 @@
+'use client';
+
+import { Mission } from '@/lib/missions';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useRef } from 'react';
+import ScrambleText from '../ui/ScrambleText';
+
+interface MissionRailProps {
+    mission: Mission;
+    index: number;
+    total: number;
+    isActive: boolean;
+}
+
+const REPULSION_RADIUS = 250;
+const REPULSION_FORCE = 0.5; // Balanced push
+const DAMPING = 0.98; // Low friction for continuous drift
+const MAX_VELOCITY = 2; // Allow slightly faster bounce
+
+export default function MissionRail({ mission, index, total, isActive }: MissionRailProps) {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (!containerRef.current || !isActive) return;
+
+        // Setup Animation (Simple Stagger)
+        const tl = gsap.timeline();
+        tl.fromTo('.rail-title',
+            { opacity: 0, x: -20 },
+            { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }
+        )
+            .fromTo('.rail-meta',
+                { opacity: 0, y: 10 },
+                { opacity: 1, y: 0, stagger: 0.1, duration: 0.4 },
+                "-=0.3"
+            )
+            .fromTo('.tech-cloud-item',
+                { opacity: 0, scale: 0.8 },
+                { opacity: 1, scale: 1, stagger: 0.05, duration: 0.3, ease: "back.out(1.7)" },
+                "-=0.2"
+            );
+
+    }, { scope: containerRef, dependencies: [isActive] });
+
+    return (
+        <div ref={containerRef} className={`h-full flex flex-col relative overflow-hidden ${isActive ? 'opacity-100' : 'opacity-40'} transition-opacity duration-500`}>
+
+            {/* Background Giant Numeral - Positioned to minimize cutoff */}
+            <div className="absolute -right-8 top-0 text-[18rem] font-black text-transparent bg-clip-text bg-gradient-to-b from-purple-500/10 to-transparent select-none z-0 leading-none">
+                {String(index + 1).padStart(2, '0')}
+            </div>
+
+            {/* Top: Header */}
+            <div className="relative z-10 flex flex-col gap-4 mb-4">
+                {/* HUD Header Line */}
+                <div className="flex items-center gap-2 text-[#ccff00] font-mono text-[10px] tracking-widest uppercase">
+                    <div className="relative w-2 h-2">
+                        <div className="absolute inset-0 bg-[#ccff00] rounded-full animate-ping opacity-75"></div>
+                        <div className="relative w-2 h-2 bg-[#ccff00] rounded-full"></div>
+                    </div>
+                    <span>Log {String(index + 1).padStart(2, '0')}/{String(total).padStart(2, '0')}</span>
+                    <div className="flex-1 h-[1px] bg-gradient-to-r from-[#ccff00]/50 to-transparent" />
+                </div>
+
+                <h3 className="rail-title text-4xl md:text-5xl font-black text-white uppercase tracking-tighter leading-[0.9] break-words hyphens-auto drop-shadow-lg">
+                    <ScrambleText text={mission.title} reveal={isActive} hover={true} />
+                </h3>
+            </div>
+
+            {/* Middle: Cloud Container (Static Grid with Scramble) */}
+            <div className="cloud-container flex-1 relative w-full my-4 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm p-6 flex flex-wrap content-start gap-3 overflow-y-auto shadow-inner">
+                {/* Subtle Grid overlay */}
+                <div className="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-10 pointer-events-none" style={{ backgroundSize: '20px 20px' }}></div>
+
+                {mission.stack.map((tech, i) => (
+                    <div
+                        key={i}
+                        className="tech-cloud-item relative group text-[10px] md:text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider bg-black/40 border border-white/10 px-3 py-1.5 rounded-full hover:border-[#ccff00] hover:text-[#ccff00] hover:bg-[#ccff00]/10 transition-all cursor-default animate-float"
+                        style={{ animationDelay: `${(i * 0.7) % 5}s` }}
+                    >
+                        <ScrambleText text={tech} hover={true} reveal={isActive} />
+                    </div>
+                ))}
+            </div>
+
+
+
+            {/* Bottom: HUD Meta Grid */}
+            <div className="relative z-10 flex flex-col gap-6 mt-auto">
+                <div className="rail-meta">
+                    <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block mb-1">Status</span>
+                    <div className="flex items-center gap-3">
+                        {/* Radar Status Icon */}
+                        <div className="relative w-4 h-4 flex items-center justify-center">
+                            <span className={`absolute inset-0 rounded-full border border-[#ccff00] ${mission.status === 'Active' ? 'animate-ping' : 'opacity-0'}`} />
+                            <span className={`relative w-2 h-2 rounded-full ${mission.status === 'Active' ? 'bg-[#ccff00] shadow-[0_0_10px_#ccff00]' : 'bg-zinc-500'}`} />
+                        </div>
+                        <span className="text-xl font-bold text-white uppercase tracking-tight">{mission.status}</span>
+                    </div>
+                </div>
+
+                <div className="rail-meta">
+                    <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block mb-1">Role</span>
+                    <span className="text-xl font-bold text-white uppercase tracking-tight drop-shadow-md">Lead</span>
+                </div>
+
+                <div className="rail-meta flex items-center justify-between border-t border-zinc-900 pt-4 mt-2">
+                    <div className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-mono group hover:border-[#ccff00] transition-colors">
+                        N
+                    </div>
+                    <span className="font-mono text-[10px] text-zinc-700 tracking-wider">
+                        {mission.id.split('_')[1]}-SEQ-{index + 42}
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+}
