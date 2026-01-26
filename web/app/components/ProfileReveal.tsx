@@ -56,7 +56,7 @@ export default function ProfileReveal() {
         >
             {/* Layer 1: Ghost / Base (Grayscale, Sketchy) */}
             <img
-                src="/assets/ghost.png"
+                src={getAssetPath("/assets/ghost.png")}
                 alt="Portrait Base"
                 className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale pointer-events-none"
             />
@@ -70,7 +70,7 @@ export default function ProfileReveal() {
                 }}
             >
                 <img
-                    src="/assets/real.jpeg"
+                    src={getAssetPath("/assets/real.jpeg")}
                     alt="Portrait Real"
                     className="w-full h-full object-cover"
                 />
