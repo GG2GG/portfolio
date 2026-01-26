@@ -11,6 +11,12 @@ import Footer from '@/app/components/layout/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
+export function generateStaticParams() {
+    return portfolioData.projects.map((project) => ({
+        slug: project.slug,
+    }));
+}
+
 export default function CaseStudyPage() {
     const params = useParams();
     const router = useRouter();
