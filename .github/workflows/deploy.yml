@@ -87,7 +87,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Add .nojekyll to prevent GitHub Pages from ignoring _next folder
-        run: touch ./web/out/.nojekyll
+        run: touch ./out/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
