@@ -128,9 +128,9 @@ export default function MissionCard({ mission, isActive }: MissionCardProps) {
                     {mission.hasCaseStudy && (
                         <Link
                             href={`/case-studies/${mission.id}`}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-teal-500/50 hover:text-teal-400 transition-all duration-300 rounded-lg group"
+                            className="inline-flex items-center gap-2 text-teal-400 font-bold uppercase tracking-widest text-xs hover:text-white transition-colors group mt-4"
                         >
-                            <span className="text-xs font-bold tracking-widest uppercase">View Products Built</span>
+                            <span>View Products Built</span>
                             <span className="group-hover:translate-x-1 transition-transform">→</span>
                         </Link>
                     )}
