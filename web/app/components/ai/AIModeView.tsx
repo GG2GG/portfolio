@@ -9,9 +9,11 @@ import { missions } from '@/lib/missions';
 export default function AIModeView() {
     const containerRef = useRef<HTMLDivElement>(null);
 
+    const { experience, ...restContent } = portfolioData;
+
     const fullData = {
-        ...portfolioData,
-        missions: missions
+        ...restContent,
+        experience: missions
     };
 
     useGSAP(() => {
