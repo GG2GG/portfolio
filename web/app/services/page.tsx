@@ -10,7 +10,7 @@ export default function ServicesPage() {
         <main className="w-full min-h-screen bg-black text-white pt-24">
 
             {/* 1. Hero / Intro */}
-            <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-20">
+            <section className="relative w-full max-w-7xl mx-auto px-8 md:px-24 py-20">
                 <h1 className="text-6xl md:text-9xl font-black tracking-tighter uppercase mb-8">
                     More Than <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ccff00] to-zinc-500">Just a Prod-Man</span>
@@ -22,7 +22,7 @@ export default function ServicesPage() {
             </section>
 
             {/* 2. Bio & Personal Grid */}
-            <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20 border-t border-zinc-900">
+            <section className="relative w-full max-w-7xl mx-auto px-8 md:px-24 py-12 md:py-20 border-t border-zinc-900">
                 <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
                     {/* Text Column (First in DOM, Left on Desktop, Bottom on Mobile) */}
@@ -62,7 +62,7 @@ export default function ServicesPage() {
 
 
             {/* 3. Beyond the Keyboard (Hobbies) */}
-            <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-900">
+            <section className="relative w-full max-w-7xl mx-auto px-8 md:px-24 py-20 border-t border-zinc-900">
                 <div className="mb-16">
                     <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-4">
                         Beyond the <span className="text-zinc-700">Keyboard</span>
@@ -126,7 +126,7 @@ export default function ServicesPage() {
 
             {/* 4. The Process (Journey) */}
             <div className="border-t border-zinc-900 bg-[#FDFCF0]">
-                <div className="max-w-7xl mx-auto px-6 md:px-12 py-32">
+                <div className="max-w-7xl mx-auto px-8 md:px-24 py-32">
                     <h3 className="text-center text-5xl md:text-7xl font-black text-black mb-48 uppercase tracking-tight">How I Deliver</h3>
                     <ProcessTimeline />
                 </div>
