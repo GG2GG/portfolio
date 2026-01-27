@@ -10,9 +10,10 @@ export default function AIToggle() {
         return (
             <button
                 onClick={toggleMode}
-                className="fixed top-6 left-1/2 -translate-x-1/2 z-[10000] font-mono text-sm bg-black border border-white text-white px-4 py-2 hover:bg-white hover:text-black transition-colors pointer-events-auto shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-x-[-50%] active:translate-y-[2px] active:shadow-none"
+                className="fixed top-6 left-1/2 -translate-x-1/2 z-[10000] font-mono text-[10px] md:text-sm bg-black border border-white text-white px-2 py-1 md:px-4 md:py-2 hover:bg-white hover:text-black transition-colors pointer-events-auto shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-x-[-50%] active:translate-y-[2px] active:shadow-none whitespace-nowrap"
             >
-                {`[ SWITCH_TO_HUMAN_MODE ]`}
+                <span className="md:hidden">{`[ EXIT_AI ]`}</span>
+                <span className="hidden md:inline">{`[ SWITCH_TO_HUMAN_MODE ]`}</span>
             </button>
         );
     }
