@@ -127,7 +127,7 @@ export default function MissionCard({ mission, isActive }: MissionCardProps) {
                     {/* Check if mission has case study and show CTA */}
                     {mission.hasCaseStudy && (
                         <Link
-                            href={`/case-studies/${mission.id}`}
+                            href="/case-studies/quicksku"
                             className="inline-flex items-center gap-2 text-teal-400 font-bold uppercase tracking-widest text-xs hover:text-white transition-colors group mt-4"
                         >
                             <span>View Products Built</span>
