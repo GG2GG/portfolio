@@ -120,7 +120,7 @@ export default function Footer() {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 w-full h-full flex flex-col items-center pb-10 flex-1">
+            <div className="relative z-10 w-full h-full flex flex-col items-center pb-10">
 
                 {/* 1. Main Visual: Mascot & Text */}
                 <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center justify-start pt-32 md:pt-20 mb-2 text-center">
