@@ -139,6 +139,6 @@ export default function MissionRail({ mission, index, total, isActive }: Mission
 
 
         </div>
-        </div >
+
     );
 }
