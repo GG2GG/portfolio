@@ -142,13 +142,13 @@ export default function ProcessTimeline() {
             <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
             {/* Absolute Center Line (The Spine) */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-zinc-300 md:-translate-x-1/2 z-0">
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-300 -translate-x-1/2 z-0">
                 {/* Active Progress Line */}
                 <div ref={lineRef} className="w-full bg-gradient-to-b from-[#ccff00] via-cyan-400 to-purple-500 shadow-[0_0_15px_rgba(204,255,0,0.5)]" style={{ height: '0%' }} />
             </div>
 
             {/* --- START NODE: THE ORIGIN (Data Singularity) --- */}
-            <div className="absolute top-0 left-6 md:left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
                 {/* Label */}
                 <div className="mb-8 bg-black/5 backdrop-blur-sm border border-black/10 px-4 py-2 rounded-full">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">The Origin</span>
@@ -229,7 +229,7 @@ export default function ProcessTimeline() {
                 })}
             </div>
 
-            <div className="hidden md:flex flex-col gap-24 relative z-10 py-32">
+            <div className="flex flex-col gap-24 relative z-10 py-32 px-4 md:px-0">
                 {roiContent.process.map((step, i) => {
                     const Icon = Icons[step.icon as keyof typeof Icons] || Icons.compass;
                     const stepColor = step.color || '#ccff00';
@@ -276,7 +276,7 @@ export default function ProcessTimeline() {
             </div>
 
             {/* --- END NODE: THE HORIZON (Holographic Construct) --- */}
-            <div className="absolute bottom-0 left-6 md:left-1/2 -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center">
                 <div className="mb-4 text-center">
                     <h4 className="text-xl font-black uppercase text-black">Impact</h4>
                     <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Continuous Growth</p>
