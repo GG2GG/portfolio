@@ -27,6 +27,7 @@ export default function ProjectShowcase() {
     const router = useRouter();
 
     const handleGhostClick = (index: number) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const link = (portfolioData.projects[index] as any).link;
         if (link) {
             router.push(link);
