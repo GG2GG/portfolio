@@ -23,15 +23,15 @@ export default function AboutSection() {
     }, { scope: container });
 
     return (
-        <section ref={container} className="py-16 md:py-32 px-6 md:px-8 bg-white" data-theme="light">
-            <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center">
+        <section ref={container} className="py-16 md:py-32 px-4 md:px-8 bg-white" data-theme="light">
+            <div className="max-w-[1600px] mx-auto grid grid-cols-2 gap-6 md:gap-32 items-center">
 
                 {/* Left Column: Bio Text */}
-                <div className="space-y-10">
-                    <h2 className="about-text text-7xl font-black uppercase tracking-tighter">
+                <div className="space-y-6 md:space-y-10">
+                    <h2 className="about-text text-4xl md:text-7xl font-black uppercase tracking-tighter">
                         Who I Am
                     </h2>
-                    <div className="about-text space-y-8 text-2xl leading-relaxed text-gray-700 font-medium">
+                    <div className="about-text space-y-8 text-sm md:text-2xl leading-relaxed text-gray-700 font-medium">
                         <p>{portfolioData.about.description}</p>
                         <p>
                             I specialize in building digital experiences that merge technical precision with aesthetic fluidity.
