@@ -9,10 +9,8 @@ import { missions } from '@/lib/missions';
 export default function AIModeView() {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const { experience, about, ...restContent } = portfolioData;
-
-    const { hero, projects, contact } = portfolioData;
-    const { experience, about, ...rest } = portfolioData; // verify no other keys missed
+    // Destructure all needed parts at once to avoid redeclaration issues
+    const { hero, projects, contact, experience: _ignoredExp, about, ...rest } = portfolioData;
 
     // Explicit Order: Hero -> About -> Experience (Missions) -> Projects -> Contact
     const fullData = {
