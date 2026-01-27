@@ -78,9 +78,18 @@ export default function MissionRail({ mission, index, total, isActive }: Mission
                 <div className="absolute inset-0 opacity-10 pointer-events-none rounded-2xl overflow-hidden" style={{ backgroundImage: `url(${getAssetPath('/assets/grid.svg')})`, backgroundSize: '20px 20px' }}></div>
 
                 {/* Header / Toggle Trigger */}
+                {/* Desktop Header (Always Visible) */}
+                <div className="hidden md:flex items-center gap-2 mb-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#ccff00]" />
+                    <span className="text-[10px] uppercase tracking-widest font-mono text-white">
+                        System Architecture
+                    </span>
+                </div>
+
+                {/* Mobile Toggle Button */}
                 <button
                     onClick={() => setIsStackOpen(!isStackOpen)}
-                    className="w-full flex items-center justify-between group z-20 relative focus:outline-none"
+                    className="w-full flex md:hidden items-center justify-between group z-20 relative focus:outline-none"
                 >
                     <div className="flex items-center gap-2">
                         <div className={`w-1.5 h-1.5 rounded-full ${isStackOpen ? 'bg-[#ccff00]' : 'bg-zinc-500 group-hover:bg-[#ccff00]'} transition-colors`} />
@@ -98,7 +107,7 @@ export default function MissionRail({ mission, index, total, isActive }: Mission
 
                 {/* Collapsible Content */}
                 <div
-                    className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isStackOpen ? 'max-h-[300px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'}`}
+                    className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isStackOpen ? 'max-h-[300px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'} md:max-h-none md:opacity-100 md:mt-4`}
                 >
                     <div className="flex flex-wrap content-start gap-2 pb-2">
                         {mission.stack.map((tech, i) => (
