@@ -187,48 +187,6 @@ export default function ProcessTimeline() {
                 </div>
             </div>
 
-            {/* --- MOBILE: Horizontal Snap Scroll --- */}
-            <div className="md:hidden flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 -mx-6 px-6 no-scrollbar touch-pan-x">
-                {roiContent.process.map((step, i) => {
-                    const Icon = Icons[step.icon as keyof typeof Icons] || Icons.compass;
-                    const stepColor = step.color || '#ccff00';
-
-                    return (
-                        <div
-                            key={i}
-                            className="snap-center shrink-0 w-[85vw] flex flex-col"
-                        >
-                            <div className="relative w-full p-8 bg-zinc-50 border border-zinc-200 rounded-2xl flex flex-col gap-6 shadow-sm h-full">
-                                {/* Top Bar: Step Number & Icon */}
-                                <div className="flex items-center justify-between">
-                                    <span className="text-4xl font-black text-zinc-200">{String(i + 1).padStart(2, '0')}</span>
-                                    <div
-                                        className="w-12 h-12 rounded-xl bg-white border border-zinc-100 flex items-center justify-center text-black shadow-sm"
-                                        style={{ color: stepColor }}
-                                    >
-                                        <Icon className="w-6 h-6" />
-                                    </div>
-                                </div>
-
-                                <div className="mt-auto">
-                                    <h3 className="text-2xl font-black text-black mb-3 uppercase tracking-tight">
-                                        {step.title}
-                                    </h3>
-                                    <p className="text-zinc-600 font-medium leading-relaxed text-base">
-                                        {step.desc}
-                                    </p>
-                                </div>
-
-                                {/* Active Indicator Bar */}
-                                <div className="absolute bottom-0 left-0 w-full h-1.5 bg-zinc-200 rounded-b-2xl overflow-hidden">
-                                    <div className="h-full w-1/2 bg-current" style={{ color: stepColor }} />
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-
             <div className="flex flex-col gap-24 relative z-10 py-32 px-4 md:px-0">
                 {roiContent.process.map((step, i) => {
                     const Icon = Icons[step.icon as keyof typeof Icons] || Icons.compass;
