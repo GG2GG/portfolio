@@ -2,10 +2,13 @@
 
 import { useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { portfolioData } from '@/app/data/content';
 import Link from 'next/link';
 import { getAssetPath } from '@/app/utils/assets';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
     const containerRef = useRef<HTMLDivElement>(null);
