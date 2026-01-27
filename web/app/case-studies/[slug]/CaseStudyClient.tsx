@@ -280,7 +280,7 @@ export default function CaseStudyClient({ slug }: CaseStudyClientProps) {
                 </div>
 
                 {/* Footer Navigation */}
-                <div className="mt-48 pt-24 border-t border-zinc-100 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="mt-20 pt-12 border-t border-zinc-100 grid grid-cols-1 md:grid-cols-2 gap-12">
                     {/* Previous */}
                     <Link href={prevProject.link || '#'} className="group block text-left">
                         <span className="block text-xs font-bold tracking-widest text-zinc-400 uppercase mb-4 group-hover:text-teal-500 transition-colors">Previous Case Study</span>
