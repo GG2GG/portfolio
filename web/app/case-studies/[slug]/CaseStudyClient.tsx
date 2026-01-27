@@ -49,8 +49,8 @@ export default function CaseStudyClient({ slug }: CaseStudyClientProps) {
             gsap.from(section, {
                 scrollTrigger: {
                     trigger: section,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
+                    start: "top 95%", // Trigger almost immediately when in view
+                    toggleActions: "play none none none" // Don't reverse/hide
                 },
                 y: 30,
                 opacity: 0,

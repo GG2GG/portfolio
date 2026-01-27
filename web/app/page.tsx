@@ -112,7 +112,10 @@ export default function Home() {
       {/* Subsequent Sections (Normal Scroll) */}
       <div className="relative z-30 bg-zinc-50">
         <Stats />
-        <MissionLog />
+        {/* Mission / Work Section */}
+        <div id="work">
+          <MissionLog />
+        </div>
 
         {/* Project Showcase */}
         <div className="relative z-30 bg-zinc-50">

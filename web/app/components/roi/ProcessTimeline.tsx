@@ -47,7 +47,7 @@ export default function ProcessTimeline() {
                 ease: "none",
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: "top 60%",
+                    start: "top 90%", // Trigger earlier
                     end: "bottom 95%", // Extend further down
                     scrub: 1
                 }

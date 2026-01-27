@@ -113,7 +113,7 @@ export default function MissionCard({ mission, isActive }: MissionCardProps) {
                         <span className="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
                         <ScrambleText text="Key Outcomes" reveal={isActive} />
                     </h4>
-                    <ul className="space-y-3">
+                    <ul className="space-y-3 mb-8">
                         {mission.achievements.map((item, idx) => (
                             <li key={idx} className="flex items-start gap-3 group">
                                 <span className="text-teal-500/50 mt-1 font-mono text-xs shrink-0">{`>_`}</span>
@@ -123,6 +123,17 @@ export default function MissionCard({ mission, isActive }: MissionCardProps) {
                             </li>
                         ))}
                     </ul>
+
+                    {/* Check if mission has case study and show CTA */}
+                    {mission.hasCaseStudy && (
+                        <Link
+                            href={`/case-studies/${mission.id}`}
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-teal-500/50 hover:text-teal-400 transition-all duration-300 rounded-lg group"
+                        >
+                            <span className="text-xs font-bold tracking-widest uppercase">View Products Built</span>
+                            <span className="group-hover:translate-x-1 transition-transform">→</span>
+                        </Link>
+                    )}
                 </div>
 
 

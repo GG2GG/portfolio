@@ -27,10 +27,11 @@ export const missions: Mission[] = [
         achievements: [
             "Architected a 'Human-in-the-Loop' data pipeline, leveraging active learning to improve model recall by 15% quarter-over-quarter.",
             "Engineered a bespoke Point-of-Sale (POS) ecosystem in 4 months, eliminating dependency on legacy hardware and unlocking direct-to-consumer revenue channels.",
-            "Deployed RAG-based autonomous agents using LangGraph to automate complex client reporting, reducing manual overhead by 40%.",
-            "Scaled CV inference capabilities to handle 10,000+ distinct SKUs with sub-second latency.",
+            "Deployed RAG-based autonomous agents to handle rapid product addition instead of manual data collection, annotation,training, fine tuning and deployment.",
+            "Worked with the team to scale CV inference capabilities to handle 10,000+ distinct SKUs with sub-second latency utilising continuous and incremental learnings.",
+            "Developed PWA application for cashier and customer, had an inhouse POS backbone to assist transactions",
         ],
-        stack: ["Python", "Computer Vision", "Edge AI", "RAG / LLMs", "Data Annotation", "Data Engineering", "MLOps", "UI/UX", "AI Product Development"],
+        stack: ["Python", "Computer Vision", "Edge AI", "RAG / LLMs", "Data Annotation", "Data Engineering", "MLOps", "UI/UX", "AI Product Development", "Data Lake"],
         logo: "/assets/logos/radius.png",
         status: "Active",
         hasCaseStudy: true
@@ -48,7 +49,8 @@ export const missions: Mission[] = [
             "Engineered a referral loop system based on high-intent user signals, driving a 30% reduction in Customer Acquisition Cost (CAC).",
             "Stabilized a volatile 1 Cr+ MRR portfolio by implementing predictive churn modeling and automated retention workflows.",
             "Conducted extensive qualitative research (50+ interviews) to refine Product-Market Fit, directly influencing a 20% increase in market penetration.",
-            "Developed internal automation tools that streamlined operations, boosting team efficiency by 30%."
+            "Developed internal automation tools that streamlined operations, boosting team efficiency by 30%.",
+            "Drove the business, Took client calls and also assisted in handling rapid sales for the product."
         ],
         stack: ["Growth Strategy", "Data Science", "Workflow Automation", "P&L Management", "Retention Modeling", "A/B Testing", "Python Scripts", "CRM Analytics", "User Research"],
         logo: "/assets/logos/ufaber.jpeg",
@@ -70,7 +72,7 @@ export const missions: Mission[] = [
             "Designed and executed diversified lead generation campaigns to mitigate platform dependency.",
             "Mentored a team of 15+ associates, establishing data-driven performance metrics and sales protocols."
         ],
-        stack: ["SQL", "Revenue Strategy", "Team Leadership", "Data Analytics", "Salesforce", "Excel Modeling", "Lead Gen", "Performance Mgmt"],
+        stack: ["Revenue Strategy", "Team Leadership", "Data Analytics", "Leadsquared", "Excel Modeling", "Lead Generation", "Performance Management"],
         logo: "/assets/logos/byjus.png",
         status: "Completed",
         hasCaseStudy: true
