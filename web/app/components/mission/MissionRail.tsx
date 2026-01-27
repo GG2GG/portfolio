@@ -134,14 +134,7 @@ export default function MissionRail({ mission, index, total, isActive }: Mission
                     <span className="text-xl font-bold text-white uppercase tracking-tight drop-shadow-md">Lead</span>
                 </div>
 
-                <div className="rail-meta flex items-center justify-between border-t border-zinc-900 pt-4 mt-2">
-                    <div className="w-8 h-8 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-mono group hover:border-[#ccff00] transition-colors">
-                        N
-                    </div>
-                    <span className="font-mono text-[10px] text-zinc-700 tracking-wider">
-                        {mission.id.split('_')[1]}-SEQ-{index + 42}
-                    </span>
-                </div>
+
             </div>
         </div>
     );
