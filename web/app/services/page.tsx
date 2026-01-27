@@ -22,26 +22,10 @@ export default function ServicesPage() {
             </section>
 
             {/* 2. Bio & Personal Grid */}
-            <section className="relative w-full max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-20 border-t border-zinc-900">
-                <div className="flex flex-col gap-16">
+            <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-20 border-t border-zinc-900">
+                <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-12 md:gap-16 items-center">
 
-                    {/* Image Column (First) */}
-                    <div className="relative w-full h-[300px] md:h-[400px] bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800">
-                        {/* Profile Image - Cropped View */}
-                        <div className="absolute inset-0">
-                            <Image
-                                src={getAssetPath("/assets/profile.png")}
-                                alt="Gautham Ganesh Profile"
-                                fill
-                                className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
-                                priority
-                            />
-                        </div>
-                        {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                    </div>
-
-                    {/* Text Column (Second) */}
+                    {/* Text Column (First in DOM, Left on Desktop, Bottom on Mobile) */}
                     <div className="space-y-12 text-center md:text-left">
                         <div>
                             <h2 className="text-sm font-mono font-bold uppercase tracking-widest text-[#ccff00] mb-6">The Origin Story</h2>
@@ -59,6 +43,18 @@ export default function ServicesPage() {
                                 &quot;Complexity should be internal. Simplicity should be external.&quot;
                             </blockquote>
                         </div>
+                    </div>
+
+                    {/* Image Column (Second in DOM, Right on Desktop, Top on Mobile) */}
+                    <div className="relative w-full aspect-square md:aspect-[3/4] bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl">
+                        {/* Profile Image - Full View */}
+                        <Image
+                            src={getAssetPath("/assets/about_profile_new.png")}
+                            alt="Gautham Ganesh Profile"
+                            fill
+                            className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                            priority
+                        />
                     </div>
 
                 </div>
