@@ -59,7 +59,6 @@ export default function ProcessTimeline() {
         steps.forEach((step: any, i) => {
             const card = step.querySelector('.process-card');
             const connector = step.querySelector('.process-connector-line');
-            const terminal = step.querySelector('.process-terminal');
             const dot = step.querySelector('.process-dot');
             const icon = step.querySelector('.process-icon');
 
@@ -72,10 +71,8 @@ export default function ProcessTimeline() {
 
             // Dot pulse at spine
             tl.fromTo(dot, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2)" })
-                // Connector grow outward
-                .fromTo(connector, { width: 0, opacity: 0 }, { width: "calc(100% - 2rem)", opacity: 1, duration: 0.4 }, "-=0.2")
-                // Terminal dot appear
-                .fromTo(terminal, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.2 }, "-=0.1")
+                // Connector grow down
+                .fromTo(connector, { height: 0, opacity: 0 }, { height: "2rem", opacity: 1, duration: 0.4 }, "-=0.2")
                 // Card fade in
                 .fromTo(card,
                     { y: 30, opacity: 0, scale: 0.95 },
@@ -190,62 +187,45 @@ export default function ProcessTimeline() {
                 </div>
             </div>
 
-            <div className="flex flex-col gap-12 md:gap-20 relative z-10 py-12">
+            <div className="flex flex-col gap-24 relative z-10 py-32">
                 {roiContent.process.map((step, i) => {
-                    const isEven = i % 2 === 0; // Even = Left Side (Desktop), Odd = Right Side (Desktop)
                     const Icon = Icons[step.icon as keyof typeof Icons] || Icons.compass;
                     const stepColor = step.color || '#ccff00';
 
                     return (
                         <div
                             key={i}
-                            className="process-node flex items-center justify-center w-full md:flex-row flex-row"
+                            className="process-node flex flex-col items-center justify-center w-full relative"
                             style={{ '--step-color': stepColor } as React.CSSProperties}
                         >
-                            {/* 1. Card Side (Desktop Left) - Only functional on Desktop for Even items */}
-                            <div className="w-[45%] hidden md:flex justify-end relative">
-                                {isEven && (
-                                    <div className="w-full max-w-md">
-                                        <ProcessCard step={step} Icon={Icon} color={stepColor} align="right" />
-                                    </div>
-                                )}
-                            </div>
+                            {/* Central Dot on Spine */}
+                            <div
+                                className="process-dot w-6 h-6 bg-black border-2 rounded-full shadow-[0_0_15px_currentColor] z-30 mb-8"
+                                style={{ borderColor: stepColor, color: stepColor }}
+                            />
 
-                            {/* 2. Center Spine Area (10%) */}
-                            <div className="w-12 md:w-[10%] relative flex items-center justify-center shrink-0 h-12">
-                                {/* Connecting Line (Animated) */}
-                                <div
-                                    className="absolute left-[39px] top-20 bottom-0 w-[2px] bg-zinc-800 -z-10 origin-top transform-gpu"
-                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                                    ref={(el: any) => { lineRefs.current[i] = el; }}
-                                />
-                                {/* Central Dot on Spine */}
-                                <div
-                                    className="process-dot absolute left-6 md:left-1/2 top-1/2 md:-translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-black border-2 rounded-full shadow-[0_0_15px_currentColor] z-30"
-                                    style={{ borderColor: stepColor, color: stepColor }}
-                                />
+                            {/* Centered Card */}
+                            <div className="process-card w-full max-w-xl p-8 bg-white border border-zinc-200 rounded-2xl relative transition-colors group hover:bg-white hover:shadow-xl hover:shadow-black/5 text-center">
+                                {/* Hover Glow - Border Focus */}
+                                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[var(--step-color)] group-hover:shadow-[0_0_20px_var(--step-color)] transition-all duration-500 opacity-100" />
 
-                                {/* Connector Line (Desktop) */}
-                                <div className={`hidden md:flex items-center absolute top-1/2 -translate-y-1/2 h-[2px] process-connector-line overflow-visible z-10 ${isEven ? 'right-1/2 justify-start origin-right' : 'left-1/2 justify-end origin-left'}`} style={{ width: 'calc(100% - 2rem)' }}>
-
-                                    {/* The Line Itself */}
-                                    <div className="w-full h-full" style={{ backgroundColor: stepColor, boxShadow: `0 0 8px ${stepColor}` }} />
-
-                                    {/* Terminal Node (The branching endpoint at the CARD side) */}
-                                    <div className={`process-terminal w-3 h-3 rounded-full bg-black border-2 absolute top-1/2 -translate-y-1/2 ${isEven ? '-left-1.5' : '-right-1.5'}`} style={{ borderColor: stepColor }} />
-                                </div>
-
-                                {/* Connector Line (Mobile) - Always points Right from spine center */}
-                                <div className="md:hidden absolute top-1/2 -translate-y-1/2 left-6 w-8 h-[1px] bg-zinc-300 process-connector-line origin-left">
+                                {/* Connector Stem (Top of Card) */}
+                                <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-[2px] h-8 bg-zinc-300 -z-10 process-connector-line origin-bottom">
                                     <div className="w-full h-full" style={{ backgroundColor: stepColor }} />
                                 </div>
-                            </div>
 
-                            {/* 3. Opposite Side(Desktop Right) or Main Content (Mobile) */}
-                            <div className="w-full md:w-[45%] pl-4 md:pl-0">
-                                {/* Desktop: Show if Odd. Mobile: Show Always. */}
-                                <div className={`${!isEven ? 'block' : 'md:hidden'} w-full max-w-md`}>
-                                    <ProcessCard step={step} Icon={Icon} color={stepColor} align="left" />
+                                <div className="flex flex-col items-center gap-6">
+                                    <div className="process-icon shrink-0 w-16 h-16 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-black group-hover:scale-110 transition-transform duration-300 shadow-sm" style={{ color: color }}>
+                                        <Icon className="w-8 h-8" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-3xl font-black text-black mb-3 uppercase tracking-tight group-hover:text-[var(--step-color)] transition-colors">
+                                            {step.title}
+                                        </h3>
+                                        <p className="text-zinc-600 font-medium leading-relaxed text-lg">
+                                            {step.desc}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
