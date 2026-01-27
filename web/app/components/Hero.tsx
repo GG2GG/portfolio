@@ -17,6 +17,7 @@ interface HeroProps {
 export default function Hero({ startAnimation = true }: HeroProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const triggerRef = useRef<HTMLDivElement>(null);
+    const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
         // Initial Entry State
@@ -53,7 +54,32 @@ export default function Hero({ startAnimation = true }: HeroProps) {
         // Staggered Text Entry (Only if already loaded, otherwise handled by zoom)
         // We'll disable the standard text stagger on load if we are doing the zoom entry
         // to avoid double-animation chaos.
+        // Scroll Indicator Animation ("Reveal" bounce + Arrow Stagger)
+        if (scrollIndicatorRef.current) {
+            // 1. Container explicit bounce (Suggests "Pull Up")
+            gsap.to(scrollIndicatorRef.current, {
+                y: -15,
+                duration: 1.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
 
+            // 2. Arrow Stagger Loop
+            gsap.fromTo(".scroll-arrow",
+                { opacity: 0, y: -10 },
+                {
+                    opacity: 1,
+                    y: 5,
+                    duration: 1.5,
+                    stagger: {
+                        each: 0.2,
+                        repeat: -1,
+                    },
+                    ease: "power2.inOut"
+                }
+            );
+        }
     }, { scope: containerRef, dependencies: [startAnimation] });
 
     return (
@@ -86,19 +112,18 @@ export default function Hero({ startAnimation = true }: HeroProps) {
                 </div>
 
                 {/* Tagline - Absolute Bottom */}
-                {/* Tagline & Scroll Indicator - Absolute Bottom */}
-                <div className="absolute bottom-12 left-0 w-full flex flex-col items-center gap-6 z-20 pointer-events-none mix-blend-difference">
-                    <SplitText className="text-lg md:text-2xl font-mono text-white font-bold tracking-wider uppercase opacity-100 hero-tagline">
-                        {portfolioData.hero.tagline}
-                    </SplitText>
+                {/* Scroll Indicator - Absolute Bottom */}
+                <div ref={(el) => {
+                    // @ts-ignore
+                    scrollIndicatorRef.current = el;
+                }} className="absolute bottom-12 left-0 w-full flex flex-col items-center gap-2 z-20 pointer-events-none mix-blend-difference">
 
-                    {/* Scroll Down Arrows */}
-                    <div className="flex flex-col items-center gap-1 opacity-60">
+                    {/* Scroll Down Arrows - GSAP Animated */}
+                    <div className="flex flex-col items-center gap-[-4px]">
                         {[...Array(3)].map((_, i) => (
                             <div
                                 key={i}
-                                className="w-4 h-4 border-b-2 border-r-2 border-white transform rotate-45 animate-pulse"
-                                style={{ animationDelay: `${i * 0.2}s` }}
+                                className="scroll-arrow w-6 h-6 border-b-2 border-r-2 border-white transform rotate-45 opacity-0"
                             />
                         ))}
                     </div>
