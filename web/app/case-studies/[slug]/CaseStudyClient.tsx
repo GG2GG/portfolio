@@ -145,7 +145,7 @@ export default function CaseStudyClient({ slug }: CaseStudyClientProps) {
                                 </div>
                                 <div>
                                     <label className="block text-[10px] text-zinc-400 uppercase tracking-widest mb-2">Primary Impact</label>
-                                    <div className="text-xl font-serif text-zinc-900 leading-snug">{project.caseStudy.impact.split('.')[0]}.</div>
+                                    <div className="text-xl font-serif text-zinc-900 leading-snug">{project.caseStudy.impact.split('.')[0]}Faster checkout and experience handling</div>
                                 </div>
                             </ul>
 
