@@ -10,7 +10,7 @@ export default function AIToggle() {
         return (
             <button
                 onClick={toggleMode}
-                className="fixed top-6 left-1/2 -translate-x-1/2 z-[1000] font-mono text-sm bg-black border border-white text-white px-4 py-2 hover:bg-white hover:text-black transition-colors pointer-events-auto shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-x-[-50%] active:translate-y-[2px] active:shadow-none"
+                className="fixed top-6 left-1/2 -translate-x-1/2 z-[10000] font-mono text-sm bg-black border border-white text-white px-4 py-2 hover:bg-white hover:text-black transition-colors pointer-events-auto shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-x-[-50%] active:translate-y-[2px] active:shadow-none"
             >
                 {`[ SWITCH_TO_HUMAN_MODE ]`}
             </button>
@@ -21,7 +21,7 @@ export default function AIToggle() {
     return (
         <button
             onClick={toggleMode}
-            className={`fixed top-6 left-1/2 -translate-x-1/2 z-[1000] flex items-center gap-0 bg-white/10 backdrop-blur-md rounded-full border border-white/20 p-1 transition-all hover:scale-105 active:scale-95 group overflow-hidden pointer-events-auto mix-blend-difference`}
+            className={`fixed top-6 left-1/2 -translate-x-1/2 z-[10000] flex items-center gap-0 bg-white/10 backdrop-blur-md rounded-full border border-white/20 p-1 transition-all hover:scale-105 active:scale-95 group overflow-hidden pointer-events-auto mix-blend-difference`}
         >
             <div
                 className={`relative px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${!isAIMode ? 'bg-white text-black' : 'text-white/50 hover:text-white'}`}

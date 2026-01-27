@@ -43,7 +43,6 @@ export default function AIModeView() {
     }, [fullTextString]);
 
     return (
-    return (
         <div
             ref={containerRef}
             data-lenis-prevent="true"
