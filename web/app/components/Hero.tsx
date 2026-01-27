@@ -88,7 +88,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
                 {/* Tagline - Absolute Bottom */}
                 {/* Tagline & Scroll Indicator - Absolute Bottom */}
                 <div className="absolute bottom-12 left-0 w-full flex flex-col items-center gap-6 z-20 pointer-events-none mix-blend-difference">
-                    <SplitText className="text-lg md:text-2xl font-mono text-white tracking-wider uppercase opacity-90 hero-tagline">
+                    <SplitText className="text-lg md:text-2xl font-mono text-white font-bold tracking-wider uppercase opacity-100 hero-tagline">
                         {portfolioData.hero.tagline}
                     </SplitText>
 
