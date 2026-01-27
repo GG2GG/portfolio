@@ -4,11 +4,10 @@ import { portfolioData } from '@/app/data/content';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef } from 'react';
-import { getAllMissions } from '@/lib/missions';
+import { missions } from '@/lib/missions';
 
 export default function AIModeView() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const missions = getAllMissions();
 
     const fullData = {
         ...portfolioData,
