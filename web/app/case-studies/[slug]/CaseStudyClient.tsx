@@ -75,8 +75,8 @@ export default function CaseStudyClient({ slug }: CaseStudyClientProps) {
             {/* Background Splash */}
             <div className={`fixed top-0 right-0 w-[800px] h-[800px] bg-gradient-to-b ${gradientBg} rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-50`} />
 
-            {/* Nav / Back */}
-            <nav className="fixed top-0 left-0 w-full p-6 md:p-12 z-50 flex justify-between items-center pointer-events-none mix-blend-difference text-white">
+            {/* Nav / Back - Pushed down to avoid overlap with global nav */}
+            <nav className="fixed top-24 left-0 w-full px-6 md:px-12 z-40 flex justify-between items-center pointer-events-none mix-blend-difference text-white">
                 <button
                     onClick={() => router.back()}
                     className="pointer-events-auto group flex items-center gap-3 text-sm font-bold uppercase tracking-widest hover:text-white/70 transition-colors"
