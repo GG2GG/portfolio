@@ -65,7 +65,7 @@ export default function MissionCard({ mission, isActive }: MissionCardProps) {
             </div>
 
             {/* Content Container */}
-            <div className="relative z-10 pl-8 md:pl-16 border-l border-white/20 ml-8 md:ml-0 pointer-events-auto">
+            <div className="relative z-10 px-4 md:px-0 md:pl-16 md:border-l border-white/20 md:ml-0 pointer-events-auto">
 
                 {/* Block 1: Header (Role & Company) */}
                 <div className="hud-block mb-8 relative">
