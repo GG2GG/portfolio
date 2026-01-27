@@ -127,7 +127,7 @@ export default function ServicesPage() {
             {/* 4. The Process (Journey) */}
             <div className="border-t border-zinc-900 bg-[#FDFCF0]">
                 <div className="max-w-7xl mx-auto px-8 md:px-24 py-32">
-                    <h3 className="text-center text-5xl md:text-7xl font-black text-black mb-48 uppercase tracking-tight">How I Deliver</h3>
+                    <h3 className="text-center text-5xl md:text-7xl font-black text-black mb-12 uppercase tracking-tight">How I Deliver</h3>
                     <ProcessTimeline />
                 </div>
             </div>

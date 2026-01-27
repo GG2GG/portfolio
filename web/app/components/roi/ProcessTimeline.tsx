@@ -136,10 +136,37 @@ export default function ProcessTimeline() {
     }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="w-full max-w-7xl mx-auto mt-24 mb-32 relative min-h-[1600px] pt-32 pb-32 overflow-hidden">
+        <div ref={containerRef} className="w-full max-w-7xl mx-auto mt-12 mb-32 relative min-h-[1600px] pt-12 pb-32 overflow-hidden">
             {/* Ambient Background Glows */}
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
             <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+
+            {/* --- Flying Icons Background --- */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+                {[...Array(12)].map((_, i) => {
+                    const IconList = [Icons.compass, Icons.users, Icons.cpu, Icons.rocket, Icons.activity, Icons.shield];
+                    const RandomIcon = IconList[i % IconList.length];
+                    const randomX = Math.floor(Math.random() * 80) + 10; // 10% to 90%
+                    const randomY = Math.floor(Math.random() * 80) + 10; // 10% to 90%
+                    const randomDelay = Math.random() * 5;
+                    const randomDuration = 10 + Math.random() * 10;
+
+                    return (
+                        <div
+                            key={`fly-icon-${i}`}
+                            className="absolute opacity-5 md:opacity-10 animate-float"
+                            style={{
+                                left: `${randomX}%`,
+                                top: `${randomY}%`,
+                                animation: `float ${randomDuration}s ease-in-out infinite alternate`,
+                                animationDelay: `${randomDelay}s`
+                            }}
+                        >
+                            <RandomIcon className="w-12 h-12 md:w-24 md:h-24 text-black" />
+                        </div>
+                    );
+                })}
+            </div>
 
             {/* Absolute Center Line (The Spine) */}
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-300 -translate-x-1/2 z-0">
