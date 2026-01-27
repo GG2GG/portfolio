@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Permanent_Marker, Anton } from "next/font/google"; // Added Anton
-import Navbar from "./components/layout/Navbar";
+import ClientLayout from "./components/layout/ClientLayout";
+import Navbar from "./components/layout/Navbar"; // Keep for type safety if needed, or remove if unused
 import SmoothScroll from "./components/ui/SmoothScroll";
-import GlobalProgressBar from "./components/ui/GlobalProgressBar";
-import ContactModal from "./components/ui/ContactModal";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -44,10 +43,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} ${anton.variable} antialiased`}
       >
         <SmoothScroll>
-          <Navbar />
-          <GlobalProgressBar />
-          <ContactModal />
-          {children}
+          <ClientLayout>
+            {children}
+          </ClientLayout>
         </SmoothScroll>
       </body>
     </html>
