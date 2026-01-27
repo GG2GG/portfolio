@@ -78,27 +78,27 @@ export default function StaticROIButton() {
 
             <Link
                 href="/services"
-                className="group relative z-10 inline-flex items-center gap-4 px-12 py-6 bg-zinc-900 text-white rounded-full overflow-hidden transition-transform duration-500 hover:scale-110 shadow-2xl hover:shadow-[0_20px_60px_-10px_rgba(204,255,0,0.3)] border border-zinc-800 hover:border-[#ccff00]"
+                className="group relative z-10 inline-flex items-center gap-3 md:gap-4 px-6 py-4 md:px-12 md:py-6 bg-zinc-900 text-white rounded-full overflow-hidden transition-transform duration-500 hover:scale-110 shadow-2xl hover:shadow-[0_20px_60px_-10px_rgba(204,255,0,0.3)] border border-zinc-800 hover:border-[#ccff00]"
             >
                 {/* Neon Glow Background */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Icon */}
-                <span className="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#ccff00] text-black font-bold shadow-[0_0_20px_rgba(204,255,0,0.5)] group-hover:scale-110 transition-transform">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-6 h-6">
+                <span className="relative z-10 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#ccff00] text-black font-bold shadow-[0_0_20px_rgba(204,255,0,0.5)] group-hover:scale-110 transition-transform">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-5 h-5 md:w-6 md:h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </span>
 
                 {/* Text */}
                 <div className="relative z-10 flex flex-col items-start leading-none h-full justify-center">
-                    <span className="text-[9px] uppercase tracking-[0.3em] text-[#ccff00] font-mono mb-1.5 opacity-80 group-hover:opacity-100 transition-opacity">Strategies Declassified</span>
-                    <span className="text-xl md:text-2xl font-black uppercase tracking-tight group-hover:tracking-normal transition-all duration-300">View More About Me</span>
+                    <span className="text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-[#ccff00] font-mono mb-1 md:mb-1.5 opacity-80 group-hover:opacity-100 transition-opacity">Strategies Declassified</span>
+                    <span className="text-base md:text-2xl font-black uppercase tracking-tight group-hover:tracking-normal transition-all duration-300">View More About Me</span>
                 </div>
 
                 {/* Arrow */}
-                <span className="relative z-10 text-zinc-600 group-hover:text-[#ccff00] group-hover:translate-x-1 transition-all duration-300 ml-4">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-6 h-6">
+                <span className="relative z-10 text-zinc-600 group-hover:text-[#ccff00] group-hover:translate-x-1 transition-all duration-300 ml-2 md:ml-4">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-5 h-5 md:w-6 md:h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </span>
