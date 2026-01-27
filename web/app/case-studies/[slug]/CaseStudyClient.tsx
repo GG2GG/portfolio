@@ -33,30 +33,34 @@ export default function CaseStudyClient({ slug }: CaseStudyClientProps) {
         : portfolioData.projects[0];
 
     // Initial & Scroll Animation
+    // Initial & Scroll Animation
     useGSAP(() => {
         if (!containerRef.current) return;
 
         // Entry
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        tl.from(".animate-title", { y: 50, opacity: 0, duration: 1 })
-            .from(".animate-meta", { y: 20, opacity: 0, duration: 0.8 }, "-=0.8")
-            .from(".animate-image", { scale: 0.95, opacity: 0, duration: 1.2 }, "-=0.6")
-            .from(".animate-sidebar", { x: -20, opacity: 0, duration: 1 }, "-=0.8");
+        tl.fromTo(".animate-title", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1 })
+            .fromTo(".animate-meta", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, "-=0.8")
+            .fromTo(".animate-image", { scale: 0.95, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2 }, "-=0.6")
+            .fromTo(".animate-sidebar", { x: -20, opacity: 0 }, { x: 0, opacity: 1, duration: 1 }, "-=0.8");
 
         // Scroll Reveals for Content
         const sections = gsap.utils.toArray('.scroll-reveal');
         sections.forEach((section: any) => {
-            gsap.from(section, {
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 95%", // Trigger almost immediately when in view
-                    toggleActions: "play none none none" // Don't reverse/hide
-                },
-                y: 30,
-                opacity: 0,
-                duration: 0.8,
-                ease: "power2.out"
-            });
+            gsap.fromTo(section,
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 95%", // Trigger almost immediately when in view
+                        toggleActions: "play none none none" // Don't reverse/hide
+                    }
+                }
+            );
         });
 
 
