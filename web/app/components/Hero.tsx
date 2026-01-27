@@ -83,9 +83,9 @@ export default function Hero({ startAnimation = true }: HeroProps) {
                     <div className="mt-6 text-xl md:text-2xl font-bold tracking-widest uppercase opacity-100 hero-subtitle">
                         {portfolioData.hero.role}
                     </div>
-                    <div className="mt-2 text-sm md:text-base font-mono text-zinc-400 tracking-wider uppercase opacity-80 hero-tagline">
+                    <SplitText className="mt-2 text-sm md:text-base font-mono text-zinc-400 tracking-wider uppercase opacity-80 hero-tagline">
                         {portfolioData.hero.tagline}
-                    </div>
+                    </SplitText>
                 </div>
             </div>
         </section>
