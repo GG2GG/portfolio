@@ -23,7 +23,7 @@ export const missions: Mission[] = [
         location: "Bengaluru, IN",
         duration: "02/2024 - Present",
         category: "Artificial Intelligence",
-        summary: "Spearheading the product vision for ShopAssist™, a proprietary Computer Vision platform enabling cashier-less checkout. Orchestrating the convergence of Edge AI, Real-time Inference, and Hardware capabilities to deliver 98% transaction accuracy across distributed retail environments.",
+        summary: "Spearheading the product vision for ShopAssist™, a proprietary Computer Vision platform enabling friction-less checkout. Orchestrating the convergence of Edge AI, Real-time Inference, and Hardware capabilities to deliver 98% prediction accuracy across distributed retail environments.",
         achievements: [
             "Architected a 'Human-in-the-Loop' data pipeline, leveraging active learning to improve model recall by 15% quarter-over-quarter.",
             "Engineered a bespoke Point-of-Sale (POS) ecosystem in 4 months, eliminating dependency on legacy hardware and unlocking direct-to-consumer revenue channels.",
