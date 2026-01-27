@@ -5,6 +5,19 @@ import { useViewMode } from '@/app/context/ViewModeContext';
 export default function AIToggle() {
     const { isAIMode, toggleMode } = useViewMode();
 
+    // RETRO 1990's Style for AI Mode
+    if (isAIMode) {
+        return (
+            <button
+                onClick={toggleMode}
+                className="fixed top-6 left-1/2 -translate-x-1/2 z-[1000] font-mono text-sm bg-black border border-white text-white px-4 py-2 hover:bg-white hover:text-black transition-colors pointer-events-auto shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] active:translate-x-[-50%] active:translate-y-[2px] active:shadow-none"
+            >
+                {`[ SWITCH_TO_HUMAN_MODE ]`}
+            </button>
+        );
+    }
+
+    // Modern Style for Human Mode
     return (
         <button
             onClick={toggleMode}
