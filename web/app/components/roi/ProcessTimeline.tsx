@@ -215,7 +215,7 @@ export default function ProcessTimeline() {
                                 </div>
 
                                 <div className="flex flex-col items-center gap-6">
-                                    <div className="process-icon shrink-0 w-16 h-16 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-black group-hover:scale-110 transition-transform duration-300 shadow-sm" style={{ color: color }}>
+                                    <div className="process-icon shrink-0 w-16 h-16 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-black group-hover:scale-110 transition-transform duration-300 shadow-sm" style={{ color: stepColor }}>
                                         <Icon className="w-8 h-8" />
                                     </div>
                                     <div>
