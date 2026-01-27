@@ -46,6 +46,14 @@ export default function AIModeView() {
         type();
     }, [fullTextString]);
 
+    const contentRef = useRef<HTMLDivElement>(null);
+
+    const handleScrollToTop = () => {
+        if (contentRef.current) {
+            contentRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    };
+
     return (
         <div
             ref={containerRef}
@@ -57,14 +65,23 @@ export default function AIModeView() {
                 {/* Vintage Frame Header */}
                 <div className="text-white leading-none font-bold whitespace-nowrap text-sm md:text-base overflow-hidden select-none">
                     <div className="flex justify-between items-center bg-black">
-                        <span>╔═[<span className="text-white">■</span>]══════════════════════════════════════</span>
-                        <span className="px-2 bg-black text-white mx-auto -translate-y-[1px]">PORTFOLIO.CPP</span>
-                        <span>═══════════════════════[<span className="text-white">↑</span>]═╗</span>
+                        <span className="flex-shrink-0">╔═[<span className="text-white">■</span>]══</span>
+                        <div className="flex-grow overflow-hidden px-2">
+                            {"══════════════════════════════════════════════════════════════════════════════════════════════════".slice(0, 100)}
+                        </div>
+                        <span className="flex-shrink-0 px-2 bg-black text-white -translate-y-[1px]">PORTFOLIO.CPP</span>
+                        <div className="flex-grow overflow-hidden px-2 text-right">
+                            {"══════════════════════════════════════════════════════════════════════════════════════════════════".slice(0, 100)}
+                        </div>
+                        <span className="flex-shrink-0">═[<button onClick={handleScrollToTop} className="text-white hover:bg-white hover:text-black px-0.5 transition-colors">↑</button>]═╗</span>
                     </div>
                 </div>
 
                 {/* Content Area */}
-                <div className="flex-1 bg-black border-x-2 border-double border-white overflow-y-auto relative scrollbar-retro p-4 md:p-6">
+                <div
+                    ref={contentRef}
+                    className="flex-1 bg-black border-x-2 border-double border-white overflow-y-auto relative scrollbar-retro p-4 md:p-6"
+                >
                     <pre className="whitespace-pre-wrap font-mono text-xs md:text-sm lg:text-base leading-relaxed text-white">
                         <div className="mb-4 opacity-50 text-[10px]">
                             #include &lt;portfolio.h&gt;<br />
@@ -90,8 +107,12 @@ export default function AIModeView() {
 
                 {/* Vintage Frame Footer */}
                 <div className="text-white leading-none font-bold whitespace-nowrap text-sm md:text-base overflow-hidden select-none">
-                    <div className="flex justify-between items-center bg-black">
-                        <span>╚═════════════════════════════════════════════════════════════════════════════════════════╝</span>
+                    <div className="flex items-center bg-black">
+                        <span className="flex-shrink-0">╚</span>
+                        <div className="flex-grow overflow-hidden">
+                            {"═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════".slice(0, 200)}
+                        </div>
+                        <span className="flex-shrink-0">╝</span>
                     </div>
                 </div>
 
