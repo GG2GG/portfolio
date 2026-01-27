@@ -12,7 +12,7 @@ export default function AIModeView() {
     // Destructure all needed parts at once to avoid redeclaration issues
     const { hero, projects, contact, experience: _ignoredExp, about, ...rest } = portfolioData;
 
-    // Explicit Order: Hero -> About -> Experience (Missions) -> Projects -> Contact
+    // Explicit Order: Hero -> About -> Experience (Missions) -> Projects -> Contact -> FAQs
     const fullData = {
         hero,
         about: {
@@ -21,7 +21,8 @@ export default function AIModeView() {
         },
         experience: missions,
         projects,
-        contact
+        contact,
+        faqs: portfolioData.faqs
     };
 
     const [displayedText, setDisplayedText] = React.useState('');

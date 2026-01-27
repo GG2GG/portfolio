@@ -1,33 +1,9 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { portfolioData } from '../data/content';
 
-const faqs = [
-    {
-        question: "How do you bridge the gap between Engineering and Product?",
-        answer: "I speak both languages fluently. My background in full-stack engineering allows me to validate feasibility instantly, while my product experience ensures we're building for ROI, not just complexity. I eliminate the 'translation layer' friction."
-    },
-    {
-        question: "What is your approach to AI implementation?",
-        answer: "Pragmatic and user-centric. I prioritize 'Invisible AI'—systems that enhance utility without forcing users to become prompt engineers. I focus heavily on data pipelines (RAG, Fine-tuning) and evaluation metrics before scaling."
-    },
-    {
-        question: "Are you hands-on with code?",
-        answer: "Extremely. I prototype every feature I spec. From writing Python/FastAPI backends to tweaking React frontends/Tailwind styles. I believe you can't manage what you can't build (or at least deeply understand)."
-    },
-    {
-        question: "What industries do you specialize in?",
-        answer: "My deep dives have been in Retail Tech (Computer Vision, Cashier-less stores) and EdTech (Growth Engines, Personalized Learning). However, my core skillset of 'Data -> Insight -> Action' is sector-agnostic."
-    },
-    {
-        question: "How do you handle ambiguity in product requirements?",
-        answer: "I embrace it. Ambiguity is just a lack of data. I use rapid prototyping and user feedback loops to turn assumptions into facts, ensuring we build the right thing before we build it right."
-    },
-    {
-        question: "What is your leadership style?",
-        answer: "Servant-leadership backed by technical empathy. I clear blockers, shield the team from scope creep, and ensure engineers have the context they need to make autonomous decisions."
-    }
-];
+const faqs = portfolioData.faqs;
 
 export default function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
