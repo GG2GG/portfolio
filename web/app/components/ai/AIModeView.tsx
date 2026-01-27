@@ -3,7 +3,7 @@
 import { portfolioData } from '@/app/data/content';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { missions } from '@/lib/missions';
 
 export default function AIModeView() {
@@ -11,22 +11,38 @@ export default function AIModeView() {
 
     const { experience, about, ...restContent } = portfolioData;
 
+    const { hero, projects, contact } = portfolioData;
+    const { experience, about, ...rest } = portfolioData; // verify no other keys missed
+
+    // Explicit Order: Hero -> About -> Experience (Missions) -> Projects -> Contact
     const fullData = {
-        ...restContent,
+        hero,
         about: {
             ...about,
             description: "I build digital experiences that merge Technical Precision with Aesthetic Fluidity. My work is defined by a commitment to Performance, Accessibility, and Pixel-Perfect Execution."
         },
-        experience: missions
+        experience: missions,
+        projects,
+        contact
     };
 
-    useGSAP(() => {
-        gsap.from(containerRef.current, {
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out"
-        });
-    }, { scope: containerRef });
+    const [displayedText, setDisplayedText] = React.useState('');
+    const fullTextString = JSON.stringify(fullData, null, 2);
+
+    React.useEffect(() => {
+        let currentIndex = 0;
+        const speed = 2; // chars per frame
+
+        const type = () => {
+            if (currentIndex < fullTextString.length) {
+                setDisplayedText(fullTextString.slice(0, currentIndex + speed));
+                currentIndex += speed;
+                requestAnimationFrame(type);
+            }
+        };
+
+        type();
+    }, [fullTextString]);
 
     return (
         <div
