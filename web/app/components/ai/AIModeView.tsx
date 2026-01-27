@@ -25,7 +25,8 @@ export default function AIModeView() {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[500] bg-black text-white font-mono p-4 md:p-8 overflow-y-auto h-[100dvh]"
+            data-lenis-prevent="true"
+            className="fixed inset-0 z-[9999] bg-black text-white font-mono p-4 md:p-8 overflow-y-auto h-[100dvh] overscroll-y-contain pointer-events-auto"
         >
             <div className="max-w-4xl mx-auto pb-32">
 
