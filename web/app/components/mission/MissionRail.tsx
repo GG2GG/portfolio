@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
 import ScrambleText from '../ui/ScrambleText';
+import { getAssetPath } from '@/app/utils/assets';
 
 interface MissionRailProps {
     mission: Mission;
@@ -71,7 +72,7 @@ export default function MissionRail({ mission, index, total, isActive }: Mission
             {/* Middle: Cloud Container (Static Grid with Scramble) */}
             <div className="cloud-container flex-1 relative w-full my-4 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm p-6 flex flex-wrap content-start gap-3 overflow-y-auto shadow-inner">
                 {/* Subtle Grid overlay */}
-                <div className="absolute inset-0 bg-[url('/assets/grid.svg')] opacity-10 pointer-events-none" style={{ backgroundSize: '20px 20px' }}></div>
+                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: `url(${getAssetPath('/assets/grid.svg')})`, backgroundSize: '20px 20px' }}></div>
 
                 {mission.stack.map((tech, i) => (
                     <div

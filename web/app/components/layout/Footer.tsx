@@ -4,6 +4,8 @@ import { useRef, useState } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { portfolioData } from '@/app/data/content';
+import Link from 'next/link';
+import { getAssetPath } from '@/app/utils/assets';
 
 export default function Footer() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -160,11 +162,11 @@ export default function Footer() {
                             item.action ? (
                                 <button key={item.name} onClick={item.action} className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white hover:text-[#ccff00] transition-colors text-left">{item.name}</button>
                             ) : (
-                                <a key={item.name} href={item.url} className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white hover:text-[#ccff00] transition-colors">{item.name}</a>
+                                <Link key={item.name} href={item.url} className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-white hover:text-[#ccff00] transition-colors">{item.name}</Link>
                             )
                         ))
                     }
-                    <a href="/resume.pdf" download="Gautham_Ganesh_CV.pdf" className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#ccff00] mt-4 hover:underline">RESUME</a>
+                    <a href={getAssetPath("/resume.pdf")} download="Gautham_Ganesh_CV.pdf" className="text-2xl md:text-3xl font-black uppercase tracking-tighter text-[#ccff00] mt-4 hover:underline">RESUME</a>
                 </div>
 
                 {/* Right: Socials */}

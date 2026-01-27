@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import Link from 'next/link';
 import ScrambleText from '../ui/ScrambleText';
+import { getAssetPath } from '@/app/utils/assets';
 
 interface MissionCardProps {
     mission: Mission;
@@ -74,7 +75,7 @@ export default function MissionCard({ mission, isActive }: MissionCardProps) {
                         {/* Logo */}
                         <div className="w-16 h-16 rounded-xl bg-white border border-white/20 flex items-center justify-center shrink-0 overflow-hidden shadow-[0_0_15px_rgba(255,255,255,0.1)]">
                             <img
-                                src={mission.logo}
+                                src={getAssetPath(mission.logo)}
                                 alt={`${mission.company} Logo`}
                                 className="w-full h-full object-contain p-1"
                             />
