@@ -83,7 +83,11 @@ export default function Hero({ startAnimation = true }: HeroProps) {
                     <div className="mt-6 text-xl md:text-2xl font-bold tracking-widest uppercase opacity-100 hero-subtitle">
                         {portfolioData.hero.role}
                     </div>
-                    <SplitText className="mt-2 text-sm md:text-base font-mono text-zinc-400 tracking-wider uppercase opacity-80 hero-tagline">
+                </div>
+
+                {/* Tagline - Absolute Bottom */}
+                <div className="absolute bottom-12 left-0 w-full text-center z-20 pointer-events-none mix-blend-difference">
+                    <SplitText className="text-sm md:text-base font-mono text-white tracking-wider uppercase opacity-80 hero-tagline">
                         {portfolioData.hero.tagline}
                     </SplitText>
                 </div>
