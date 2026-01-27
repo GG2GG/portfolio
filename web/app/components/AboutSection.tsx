@@ -20,6 +20,23 @@ export default function AboutSection() {
             duration: 1,
             stagger: 0.2
         });
+
+        // Keyword Pop Animation
+        gsap.from(".pop-word", {
+            scrollTrigger: {
+                trigger: container.current,
+                start: "top 60%"
+            },
+            scale: 0.8,
+            opacity: 0,
+            color: "#ccff00", // Start with accent color
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "back.out(1.7)",
+            onComplete: () => {
+                gsap.to(".pop-word", { color: "black", duration: 0.5, clearProps: "scale" }); // Return to black
+            }
+        });
     }, { scope: container });
 
     return (
@@ -35,20 +52,18 @@ export default function AboutSection() {
                     {/* Skills Grid - Move Up for Mobile impact */}
                     <div className="about-text flex flex-col items-center md:items-start">
                         <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">Core Competencies</h3>
-                        <div className="flex flex-wrap justify-center md:justify-start gap-2">
+                        <div className="flex flex-wrap justify-center md:justify-start gap-1.5 md:gap-2">
                             {portfolioData.about.skills.map(skill => (
-                                <span key={skill} className="px-3 py-1 bg-zinc-100 text-zinc-900 border border-zinc-200 text-xs font-bold uppercase tracking-widest rounded-sm">
+                                <span key={skill} className="px-2 py-1 md:px-3 md:py-1 bg-zinc-100 text-zinc-900 border border-zinc-200 text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-sm">
                                     {skill}
                                 </span>
                             ))}
                         </div>
                     </div>
 
-                    <div className="about-text space-y-8 text-xl md:text-2xl leading-relaxed text-gray-700 font-medium text-center md:text-left">
-                        <p>{portfolioData.about.description}</p>
+                    <div className="about-text space-y-8 text-lg md:text-2xl leading-tight md:leading-relaxed text-gray-700 font-medium text-center md:text-left">
                         <p>
-                            I specialize in building digital experiences that merge technical precision with aesthetic fluidity.
-                            My work is defined by a commitment to performance, accessibility, and pixel-perfect execution.
+                            I build digital experiences that merge <span className="pop-word inline-block font-bold text-black">Technical Precision</span> with <span className="pop-word inline-block font-bold text-black">Aesthetic Fluidity</span>. My work is defined by a commitment to <span className="pop-word inline-block font-bold text-black">Performance</span>, <span className="pop-word inline-block font-bold text-black">Accessibility</span>, and <span className="pop-word inline-block font-bold text-black">Pixel-Perfect Execution</span>.
                         </p>
                     </div>
                 </div>
