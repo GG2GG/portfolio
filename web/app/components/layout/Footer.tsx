@@ -88,6 +88,14 @@ export default function Footer() {
 
     }, { scope: containerRef });
 
+    // Force refresh for Footer visibility on initial load
+    useGSAP(() => {
+        const timer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 800); // Slightly after timeline refresh
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <footer
             ref={containerRef}
