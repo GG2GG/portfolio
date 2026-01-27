@@ -3,7 +3,7 @@
 import { Mission } from '@/lib/missions';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import ScrambleText from '../ui/ScrambleText';
 import { getAssetPath } from '@/app/utils/assets';
 
@@ -21,6 +21,7 @@ const MAX_VELOCITY = 2; // Allow slightly faster bounce
 
 export default function MissionRail({ mission, index, total, isActive }: MissionRailProps) {
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isStackOpen, setIsStackOpen] = useState(false);
 
     useGSAP(() => {
         if (!containerRef.current || !isActive) return;
@@ -69,20 +70,47 @@ export default function MissionRail({ mission, index, total, isActive }: Mission
                 </h3>
             </div>
 
-            {/* Middle: Cloud Container (Static Grid with Scramble) */}
-            <div className="cloud-container flex-1 relative w-full my-4 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm p-6 flex flex-wrap content-start gap-3 overflow-y-auto shadow-inner">
+            {/* Middle: Cloud Container (Collapsible Tech Stack) */}
+            <div
+                className={`cloud-container relative w-full my-4 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm p-4 transition-all duration-500 ease-in-out ${isActive ? 'opacity-100' : 'opacity-40 pointer-events-none'}`}
+            >
                 {/* Subtle Grid overlay */}
-                <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: `url(${getAssetPath('/assets/grid.svg')})`, backgroundSize: '20px 20px' }}></div>
+                <div className="absolute inset-0 opacity-10 pointer-events-none rounded-2xl overflow-hidden" style={{ backgroundImage: `url(${getAssetPath('/assets/grid.svg')})`, backgroundSize: '20px 20px' }}></div>
 
-                {mission.stack.map((tech, i) => (
-                    <div
-                        key={i}
-                        className="tech-cloud-item relative group text-[10px] md:text-xs font-mono font-bold text-zinc-400 uppercase tracking-wider bg-black/40 border border-white/10 px-3 py-1.5 rounded-full hover:border-[#ccff00] hover:text-[#ccff00] hover:bg-[#ccff00]/10 transition-all cursor-default animate-float"
-                        style={{ animationDelay: `${(i * 0.7) % 5}s` }}
-                    >
-                        <ScrambleText text={tech} hover={true} reveal={isActive} />
+                {/* Header / Toggle Trigger */}
+                <button
+                    onClick={() => setIsStackOpen(!isStackOpen)}
+                    className="w-full flex items-center justify-between group z-20 relative focus:outline-none"
+                >
+                    <div className="flex items-center gap-2">
+                        <div className={`w-1.5 h-1.5 rounded-full ${isStackOpen ? 'bg-[#ccff00]' : 'bg-zinc-500 group-hover:bg-[#ccff00]'} transition-colors`} />
+                        <span className="text-[10px] uppercase tracking-widest font-mono text-zinc-400 group-hover:text-white transition-colors">
+                            {isStackOpen ? 'System Architecture' : 'View Stack'}
+                        </span>
                     </div>
-                ))}
+                    {/* Icon */}
+                    <div className={`w-6 h-6 rounded-full border border-white/10 flex items-center justify-center bg-black/20 group-hover:border-[#ccff00]/50 transition-all ${isStackOpen ? 'rotate-180' : ''}`}>
+                        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="text-zinc-400 group-hover:text-[#ccff00] transition-colors">
+                            <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </div>
+                </button>
+
+                {/* Collapsible Content */}
+                <div
+                    className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isStackOpen ? 'max-h-[300px] opacity-100 mt-4' : 'max-h-0 opacity-0 mt-0'}`}
+                >
+                    <div className="flex flex-wrap content-start gap-2 pb-2">
+                        {mission.stack.map((tech, i) => (
+                            <div
+                                key={i}
+                                className="tech-cloud-item relative group text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider bg-black/40 border border-white/10 px-2 py-1 rounded hover:border-[#ccff00] hover:text-[#ccff00] hover:bg-[#ccff00]/10 transition-all cursor-default"
+                            >
+                                <ScrambleText text={tech} hover={true} reveal={isActive && isStackOpen} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
 
 

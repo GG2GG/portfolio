@@ -52,7 +52,7 @@ export default function FAQ() {
                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
                 </div>
                 {/* Header */}
-                <div className="mb-20 text-center">
+                <div className="mt-16 mb-20 text-center">
                     <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase mb-6">
                         Frequently Asked
                     </h2>
