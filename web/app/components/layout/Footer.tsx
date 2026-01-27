@@ -93,24 +93,14 @@ export default function Footer() {
     return (
         <footer
             ref={containerRef}
-            className="relative w-[95%] md:w-[98%] mx-auto mb-4 md:mb-6 rounded-b-[40px] md:rounded-b-[60px] pt-20 pb-6 overflow-hidden min-h-screen flex flex-col justify-end bg-transparent"
+            className="relative w-[95%] md:w-[98%] mx-auto mb-4 md:mb-6 rounded-b-[40px] md:rounded-b-[60px] pt-10 pb-6 overflow-hidden flex flex-col justify-end bg-transparent"
             data-theme="dark"
         >
             {/* The "Hill" Background */}
-            <div className="absolute inset-0 top-[20%] md:top-[25%] w-full h-[120%] bg-[#0a0a0a]">
+            <div className="absolute inset-0 top-0 w-full h-full bg-[#0a0a0a]">
                 {/* SVG Notch Curve at the top */}
-                <div className="absolute -top-[50px] md:-top-[80px] left-0 w-full h-[80px] md:h-[120px] z-0">
+                <div className="absolute -top-[40px] md:-top-[60px] left-0 w-full h-[40px] md:h-[60px] z-0">
                     <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-full fill-[#0a0a0a]">
-                        {/* 
-                            Path Logic:
-                            1. Start bottom-left (0,120)
-                            2. Line to top-left corner with curve (0,40) -> (40,0)
-                            3. Line across to start of center notch
-                            4. Curve up for notch
-                            5. Line across to top-right
-                            6. Curve down to bottom-right (1400,0) -> (1440,40)
-                            7. Close shape
-                        */}
                         <path d="M0,120 L0,40 Q0,0 40,0 L610,0 Q680,0 720,-30 Q760,0 830,0 L1400,0 Q1440,0 1440,40 L1440,120 Z" />
                     </svg>
                 </div>
@@ -123,7 +113,7 @@ export default function Footer() {
             <div className="relative z-10 w-full h-full flex flex-col items-center pb-10">
 
                 {/* 1. Main Visual: Mascot & Text */}
-                <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center justify-start pt-32 md:pt-20 mb-2 text-center">
+                <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center justify-start pt-10 md:pt-14 mb-2 text-center">
 
                     {/* Big Text Layer (Relative Flow) */}
                     <div className="footer-text relative w-full flex flex-col items-center justify-center text-center z-0 pointer-events-none select-none mb-2 transition-all duration-1000">
