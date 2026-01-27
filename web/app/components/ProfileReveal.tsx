@@ -49,20 +49,20 @@ export default function ProfileReveal() {
     return (
         <div
             ref={containerRef}
-            className="relative w-full aspect-[3/4] overflow-hidden rounded-xl bg-gray-100 cursor-crosshair"
+            className="relative w-full overflow-hidden rounded-xl bg-gray-100 cursor-crosshair"
             style={{
                 "--x": "-100px", // Start off-screen
                 "--y": "-100px"
             } as React.CSSProperties}
         >
-            {/* Layer 1: Ghost / Base (Grayscale, Sketchy) */}
+            {/* Layer 1: Ghost / Base (Grayscale, Sketchy) - RELATIVE to define height */}
             <img
                 src={getAssetPath("/assets/ghost.png")}
                 alt="Portrait Base"
-                className="absolute inset-0 w-full h-full object-cover opacity-60 grayscale pointer-events-none"
+                className="relative w-full h-auto block opacity-60 grayscale pointer-events-none select-none"
             />
 
-            {/* Layer 2: Real / Reveal (Color, Sharp) */}
+            {/* Layer 2: Real / Reveal (Color, Sharp) - ABSOLUTE to overlay */}
             <div
                 className="absolute inset-0 w-full h-full pointer-events-none"
                 style={{
