@@ -49,22 +49,22 @@ export default function ProfileReveal() {
     return (
         <div
             ref={containerRef}
-            className="relative w-full overflow-hidden rounded-xl bg-gray-100 cursor-crosshair"
+            className="relative w-full overflow-hidden rounded-xl bg-gray-100 cursor-crosshair grid grid-cols-1 grid-rows-1"
             style={{
                 "--x": "-100px", // Start off-screen
                 "--y": "-100px"
             } as React.CSSProperties}
         >
-            {/* Layer 1: Ghost / Base (Grayscale, Sketchy) - RELATIVE to define height */}
+            {/* Layer 1: Ghost / Base (Grayscale, Sketchy) */}
             <img
                 src={getAssetPath("/assets/ghost.png")}
                 alt="Portrait Base"
-                className="relative w-full h-auto block opacity-60 grayscale pointer-events-none select-none"
+                className="col-start-1 row-start-1 relative w-full h-auto block opacity-60 grayscale pointer-events-none select-none"
             />
 
-            {/* Layer 2: Real / Reveal (Color, Sharp) - ABSOLUTE to overlay */}
+            {/* Layer 2: Real / Reveal (Color, Sharp) */}
             <div
-                className="absolute inset-0 w-full h-full pointer-events-none"
+                className="col-start-1 row-start-1 relative w-full h-auto pointer-events-none"
                 style={{
                     maskImage: `radial-gradient(circle 450px at var(--x) var(--y), black 40%, transparent 100%)`,
                     WebkitMaskImage: `radial-gradient(circle 450px at var(--x) var(--y), black 40%, transparent 100%)`,
@@ -73,7 +73,7 @@ export default function ProfileReveal() {
                 <img
                     src={getAssetPath("/assets/real.jpeg")}
                     alt="Portrait Real"
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto block select-none"
                 />
             </div>
         </div>
