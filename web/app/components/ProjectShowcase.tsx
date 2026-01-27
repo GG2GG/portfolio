@@ -61,8 +61,8 @@ export default function ProjectShowcase() {
 
     // Run on Mount + Resize
     useEffect(() => {
-        // Run immediately
-        updateDimensions();
+        // Run immediately (next frame to avoid warning)
+        requestAnimationFrame(() => updateDimensions());
 
         // Run again after a delay to ensure paint
         const timeout = setTimeout(updateDimensions, 500);
@@ -194,9 +194,6 @@ export default function ProjectShowcase() {
         >
             {/* Background Blend to Next Section (Zinc-50) */}
             <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-b from-transparent to-zinc-50 pointer-events-none z-0" />
-
-            {/* 1. Header (Top) */}
-// ...
 
             {/* 1. Header (Top) */}
             <div className="z-10 text-center">

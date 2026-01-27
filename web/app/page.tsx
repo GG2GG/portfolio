@@ -87,6 +87,7 @@ export default function Home() {
             setIsLoaded(true);
             setShowPreloader(false);
             if (typeof window !== 'undefined') {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               (window as any)._hasSessionLoaded = true;
             }
           }}

@@ -33,7 +33,6 @@ const Icons: Record<string, React.FC<{ className?: string }>> = {
 export default function ProcessTimeline() {
     const containerRef = useRef<HTMLDivElement>(null);
     const lineRef = useRef<HTMLDivElement>(null);
-    const lineRefs = useRef<any[]>([]); // Array of refs for connecting lines
 
     useGSAP(() => {
         if (!containerRef.current) return;
@@ -55,8 +54,8 @@ export default function ProcessTimeline() {
         );
 
         // 2. Reveal Steps & Connectors
-        const steps = gsap.utils.toArray('.process-node');
-        steps.forEach((step: any, i) => {
+        const steps = gsap.utils.toArray('.process-node') as HTMLDivElement[];
+        steps.forEach((step) => {
             const card = step.querySelector('.process-card');
             const connector = step.querySelector('.process-connector-line');
             const dot = step.querySelector('.process-dot');
@@ -146,10 +145,11 @@ export default function ProcessTimeline() {
                 {[...Array(12)].map((_, i) => {
                     const IconList = [Icons.compass, Icons.users, Icons.cpu, Icons.rocket, Icons.activity, Icons.shield];
                     const RandomIcon = IconList[i % IconList.length];
-                    const randomX = Math.floor(Math.random() * 80) + 10; // 10% to 90%
-                    const randomY = Math.floor(Math.random() * 80) + 10; // 10% to 90%
-                    const randomDelay = Math.random() * 5;
-                    const randomDuration = 10 + Math.random() * 10;
+                    // Deterministic positioning based on index
+                    const randomX = ((i * 37) % 80) + 10;
+                    const randomY = ((i * 53) % 80) + 10;
+                    const randomDelay = (i * 0.7) % 5;
+                    const randomDuration = 10 + (i % 8) * 2;
 
                     return (
                         <div
@@ -272,54 +272,6 @@ export default function ProcessTimeline() {
 
                     {/* Outer Shell */}
                     <div className="absolute inset-0 border border-black/20 rounded-full animate-[spin_8s_linear_infinite]" />
-                    <div className="absolute inset-2 border border-black/10 rounded-full animate-[spin_12s_linear_infinite_reverse]" />
-
-                    {/* Core Energy */}
-                    <div className="w-16 h-16 bg-[#ccff00]/20 rounded-full blur-xl animate-pulse" />
-
-                    {/* Wireframe Torus Representation (SVG) */}
-                    <svg viewBox="0 0 100 100" className="w-full h-full absolute animate-[spin_20s_linear_infinite]">
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/30" />
-                        <ellipse cx="50" cy="50" rx="40" ry="10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/30" transform="rotate(45 50 50)" />
-                        <ellipse cx="50" cy="50" rx="40" ry="10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/30" transform="rotate(-45 50 50)" />
-                        <ellipse cx="50" cy="50" rx="40" ry="10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/30" />
-                    </svg>
-
-                    {/* Central Singularity Point */}
-                    <div className="w-2 h-2 bg-black rounded-full z-10 shadow-[0_0_20px_#ccff00]" />
-                </div>
-
-                {/* Badge */}
-                <div className="mt-8 bg-black text-white px-6 py-2 rounded-full border border-zinc-800 shadow-2xl z-30">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#ccff00]">ROI Realized</span>
-                </div>
-            </div>
-
-        </div>
-    );
-}
-
-// Sub-component for Cleaner Layout
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function ProcessCard({ step, Icon, color, align }: { step: any, Icon: any, color: string, align: 'left' | 'right' }) {
-    return (
-        <div
-            className={`process-card w-full p-6 md:p-8 bg-white border border-zinc-200 rounded-2xl relative transition-colors group hover:bg-white hover:shadow-xl hover:shadow-black/5 ${align === 'right' ? 'text-right' : 'text-left'}`}
-        >
-            {/* Hover Glow - Border Focus */}
-            <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[var(--step-color)] group-hover:shadow-[0_0_20px_var(--step-color)] transition-all duration-500 opacity-100" />
-
-            <div className={`flex flex-col md:flex-row gap-5 md:gap-6 items-center ${align === 'right' ? 'md:flex-row-reverse' : ''}`}>
-                <div className="process-icon shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-black group-hover:scale-110 transition-transform duration-300 shadow-sm" style={{ color: color }}>
-                    <Icon className="w-6 h-6 md:w-8 md:h-8" />
-                </div>
-                <div>
-                    <h3 className="text-xl md:text-3xl font-black text-black mb-2 uppercase tracking-tight group-hover:text-[var(--step-color)] transition-colors">
-                        {step.title}
-                    </h3>
-                    <p className="text-zinc-600 font-medium leading-relaxed text-base">
-                        {step.desc}
-                    </p>
                 </div>
             </div>
         </div>

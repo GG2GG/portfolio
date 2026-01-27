@@ -42,6 +42,7 @@ export default function ROISection() {
 
         // 2. Metrics (Batch Stagger)
         ScrollTrigger.batch('.roi-metric', {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onEnter: (batch: any) => gsap.to(batch, {
                 opacity: 1,
                 y: 0,
@@ -54,6 +55,7 @@ export default function ROISection() {
 
         // 3. Capability Grid (Batch Stagger)
         ScrollTrigger.batch('.roi-card', {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             onEnter: (batch: any) => gsap.to(batch, {
                 opacity: 1,
                 y: 0,
