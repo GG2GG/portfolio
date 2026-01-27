@@ -132,154 +132,152 @@ export default function ProcessTimeline() {
             }
         );
 
-    }
-    );
 
-    // Force a refresh after setup to ensure positions are calculated correctly
-    ScrollTrigger.refresh();
+        // Force a refresh after setup to ensure positions are calculated correctly
+        ScrollTrigger.refresh();
 
-}, { scope: containerRef });
+    }, { scope: containerRef });
 
-return (
-    <div ref={containerRef} className="w-full max-w-7xl mx-auto mt-12 mb-32 relative min-h-[1600px] pt-12 pb-32 overflow-hidden">
-        {/* Ambient Background Glows */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
-        <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
+    return (
+        <div ref={containerRef} className="w-full max-w-7xl mx-auto mt-12 mb-32 relative min-h-[1600px] pt-12 pb-32 overflow-hidden">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
-        {/* --- Flying Icons Background --- */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            {[...Array(12)].map((_, i) => {
-                const IconList = [Icons.compass, Icons.users, Icons.cpu, Icons.rocket, Icons.activity, Icons.shield];
-                const RandomIcon = IconList[i % IconList.length];
-                // Deterministic positioning based on index
-                const randomX = ((i * 37) % 80) + 10;
-                const randomY = ((i * 53) % 80) + 10;
-                const randomDelay = (i * 0.7) % 5;
-                const randomDuration = 10 + (i % 8) * 2;
+            {/* --- Flying Icons Background --- */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+                {[...Array(12)].map((_, i) => {
+                    const IconList = [Icons.compass, Icons.users, Icons.cpu, Icons.rocket, Icons.activity, Icons.shield];
+                    const RandomIcon = IconList[i % IconList.length];
+                    // Deterministic positioning based on index
+                    const randomX = ((i * 37) % 80) + 10;
+                    const randomY = ((i * 53) % 80) + 10;
+                    const randomDelay = (i * 0.7) % 5;
+                    const randomDuration = 10 + (i % 8) * 2;
 
-                return (
-                    <div
-                        key={`fly-icon-${i}`}
-                        className="absolute opacity-5 md:opacity-10 animate-float"
-                        style={{
-                            left: `${randomX}%`,
-                            top: `${randomY}%`,
-                            animation: `float ${randomDuration}s ease-in-out infinite alternate`,
-                            animationDelay: `${randomDelay}s`
-                        }}
-                    >
-                        <RandomIcon className="w-12 h-12 md:w-24 md:h-24 text-black" />
-                    </div>
-                );
-            })}
-        </div>
-
-        {/* Absolute Center Line (The Spine) */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-300 -translate-x-1/2 z-0">
-            {/* Active Progress Line */}
-            <div ref={lineRef} className="w-full bg-gradient-to-b from-[#ccff00] via-cyan-400 to-purple-500 shadow-[0_0_15px_rgba(204,255,0,0.5)]" style={{ height: '0%' }} />
-        </div>
-
-        {/* --- START NODE: THE ORIGIN (Data Singularity) --- */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
-            {/* Label */}
-            <div className="mb-8 bg-black/5 backdrop-blur-sm border border-black/10 px-4 py-2 rounded-full">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">The Origin</span>
-            </div>
-
-            {/* Singularity Visual */}
-            <div className="relative w-40 h-40 flex items-center justify-center">
-                {/* Core */}
-                <div className="w-2 h-2 bg-black rounded-full relative z-20 shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
-
-                {/* Horizon Ring (Glow) */}
-                <div className="absolute inset-0 rounded-full border border-zinc-900/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.1)]" />
-
-                {/* Accretion Disks (Animated Rings) */}
-                <div className="chaos-ring absolute w-32 h-32 border border-zinc-400 rounded-full opacity-20 border-dashed animate-spin-slow" />
-                <div className="chaos-ring absolute w-24 h-24 border border-zinc-600 rounded-full opacity-30 border-dotted animate-reverse-spin" />
-                <div className="chaos-ring absolute w-16 h-16 border-2 border-black rounded-full opacity-10" />
-
-                {/* Infalling Data Particles */}
-                {[...Array(8)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="chaos-dot absolute w-1 h-3 bg-gradient-to-b from-black to-transparent"
-                        style={{
-                            left: '50%',
-                            top: '50%',
-                            transformOrigin: 'center bottom',
-                            transform: `rotate(${i * 45}deg) translateY(-60px)`
-                        }}
-                    />
-                ))}
-            </div>
-            <div className="mt-4 text-center">
-                <h4 className="text-xl font-black uppercase text-black">Chaos</h4>
-                <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Unstructured Data</p>
-            </div>
-        </div>
-
-        <div className="flex flex-col gap-24 relative z-10 py-32 px-4 md:px-0">
-            {roiContent.process.map((step, i) => {
-                const Icon = Icons[step.icon as keyof typeof Icons] || Icons.compass;
-                const stepColor = step.color || '#ccff00';
-
-                return (
-                    <div
-                        key={i}
-                        className="process-node flex flex-col items-center justify-center w-full relative"
-                        style={{ '--step-color': stepColor } as React.CSSProperties}
-                    >
-                        {/* Central Dot on Spine */}
+                    return (
                         <div
-                            className="process-dot w-6 h-6 bg-black border-2 rounded-full shadow-[0_0_15px_currentColor] z-30 mb-8"
-                            style={{ borderColor: stepColor, color: stepColor }}
+                            key={`fly-icon-${i}`}
+                            className="absolute opacity-5 md:opacity-10 animate-float"
+                            style={{
+                                left: `${randomX}%`,
+                                top: `${randomY}%`,
+                                animation: `float ${randomDuration}s ease-in-out infinite alternate`,
+                                animationDelay: `${randomDelay}s`
+                            }}
+                        >
+                            <RandomIcon className="w-12 h-12 md:w-24 md:h-24 text-black" />
+                        </div>
+                    );
+                })}
+            </div>
+
+            {/* Absolute Center Line (The Spine) */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-300 -translate-x-1/2 z-0">
+                {/* Active Progress Line */}
+                <div ref={lineRef} className="w-full bg-gradient-to-b from-[#ccff00] via-cyan-400 to-purple-500 shadow-[0_0_15px_rgba(204,255,0,0.5)]" style={{ height: '0%' }} />
+            </div>
+
+            {/* --- START NODE: THE ORIGIN (Data Singularity) --- */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
+                {/* Label */}
+                <div className="mb-8 bg-black/5 backdrop-blur-sm border border-black/10 px-4 py-2 rounded-full">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">The Origin</span>
+                </div>
+
+                {/* Singularity Visual */}
+                <div className="relative w-40 h-40 flex items-center justify-center">
+                    {/* Core */}
+                    <div className="w-2 h-2 bg-black rounded-full relative z-20 shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
+
+                    {/* Horizon Ring (Glow) */}
+                    <div className="absolute inset-0 rounded-full border border-zinc-900/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.1)]" />
+
+                    {/* Accretion Disks (Animated Rings) */}
+                    <div className="chaos-ring absolute w-32 h-32 border border-zinc-400 rounded-full opacity-20 border-dashed animate-spin-slow" />
+                    <div className="chaos-ring absolute w-24 h-24 border border-zinc-600 rounded-full opacity-30 border-dotted animate-reverse-spin" />
+                    <div className="chaos-ring absolute w-16 h-16 border-2 border-black rounded-full opacity-10" />
+
+                    {/* Infalling Data Particles */}
+                    {[...Array(8)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="chaos-dot absolute w-1 h-3 bg-gradient-to-b from-black to-transparent"
+                            style={{
+                                left: '50%',
+                                top: '50%',
+                                transformOrigin: 'center bottom',
+                                transform: `rotate(${i * 45}deg) translateY(-60px)`
+                            }}
                         />
+                    ))}
+                </div>
+                <div className="mt-4 text-center">
+                    <h4 className="text-xl font-black uppercase text-black">Chaos</h4>
+                    <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Unstructured Data</p>
+                </div>
+            </div>
 
-                        {/* Centered Card */}
-                        <div className="process-card w-full max-w-xl p-8 bg-white border border-zinc-200 rounded-2xl relative transition-colors group hover:bg-white hover:shadow-xl hover:shadow-black/5 text-center">
-                            {/* Hover Glow - Border Focus */}
-                            <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[var(--step-color)] group-hover:shadow-[0_0_20px_var(--step-color)] transition-all duration-500 opacity-100" />
+            <div className="flex flex-col gap-24 relative z-10 py-32 px-4 md:px-0">
+                {roiContent.process.map((step, i) => {
+                    const Icon = Icons[step.icon as keyof typeof Icons] || Icons.compass;
+                    const stepColor = step.color || '#ccff00';
 
-                            {/* Connector Stem (Top of Card) */}
-                            <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-[2px] h-8 bg-zinc-300 -z-10 process-connector-line origin-bottom">
-                                <div className="w-full h-full" style={{ backgroundColor: stepColor }} />
-                            </div>
+                    return (
+                        <div
+                            key={i}
+                            className="process-node flex flex-col items-center justify-center w-full relative"
+                            style={{ '--step-color': stepColor } as React.CSSProperties}
+                        >
+                            {/* Central Dot on Spine */}
+                            <div
+                                className="process-dot w-6 h-6 bg-black border-2 rounded-full shadow-[0_0_15px_currentColor] z-30 mb-8"
+                                style={{ borderColor: stepColor, color: stepColor }}
+                            />
 
-                            <div className="flex flex-col items-center gap-6">
-                                <div className="process-icon shrink-0 w-16 h-16 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-black group-hover:scale-110 transition-transform duration-300 shadow-sm" style={{ color: stepColor }}>
-                                    <Icon className="w-8 h-8" />
+                            {/* Centered Card */}
+                            <div className="process-card w-full max-w-xl p-8 bg-white border border-zinc-200 rounded-2xl relative transition-colors group hover:bg-white hover:shadow-xl hover:shadow-black/5 text-center">
+                                {/* Hover Glow - Border Focus */}
+                                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-[var(--step-color)] group-hover:shadow-[0_0_20px_var(--step-color)] transition-all duration-500 opacity-100" />
+
+                                {/* Connector Stem (Top of Card) */}
+                                <div className="absolute -top-8 left-1/2 -translate-x-1/2 w-[2px] h-8 bg-zinc-300 -z-10 process-connector-line origin-bottom">
+                                    <div className="w-full h-full" style={{ backgroundColor: stepColor }} />
                                 </div>
-                                <div>
-                                    <h3 className="text-3xl font-black text-black mb-3 uppercase tracking-tight group-hover:text-[var(--step-color)] transition-colors">
-                                        {step.title}
-                                    </h3>
-                                    <p className="text-zinc-600 font-medium leading-relaxed text-lg">
-                                        {step.desc}
-                                    </p>
+
+                                <div className="flex flex-col items-center gap-6">
+                                    <div className="process-icon shrink-0 w-16 h-16 rounded-2xl bg-zinc-100 border border-zinc-200 flex items-center justify-center text-black group-hover:scale-110 transition-transform duration-300 shadow-sm" style={{ color: stepColor }}>
+                                        <Icon className="w-8 h-8" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-3xl font-black text-black mb-3 uppercase tracking-tight group-hover:text-[var(--step-color)] transition-colors">
+                                            {step.title}
+                                        </h3>
+                                        <p className="text-zinc-600 font-medium leading-relaxed text-lg">
+                                            {step.desc}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                );
-            })}
-        </div>
-
-        {/* --- END NODE: THE HORIZON (Holographic Construct) --- */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center">
-            <div className="mb-4 text-center">
-                <h4 className="text-xl font-black uppercase text-black">Impact</h4>
-                <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Continuous Growth</p>
+                    );
+                })}
             </div>
 
-            {/* Holographic Torus (CSS 3D Illusion) */}
-            <div className="infinity-symbol relative w-32 h-32 flex items-center justify-center perspective-[1000px]">
+            {/* --- END NODE: THE HORIZON (Holographic Construct) --- */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center">
+                <div className="mb-4 text-center">
+                    <h4 className="text-xl font-black uppercase text-black">Impact</h4>
+                    <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Continuous Growth</p>
+                </div>
 
-                {/* Outer Shell */}
-                <div className="absolute inset-0 border border-black/20 rounded-full animate-[spin_8s_linear_infinite]" />
+                {/* Holographic Torus (CSS 3D Illusion) */}
+                <div className="infinity-symbol relative w-32 h-32 flex items-center justify-center perspective-[1000px]">
+
+                    {/* Outer Shell */}
+                    <div className="absolute inset-0 border border-black/20 rounded-full animate-[spin_8s_linear_infinite]" />
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
 }
