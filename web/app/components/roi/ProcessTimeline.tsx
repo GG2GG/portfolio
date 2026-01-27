@@ -133,8 +133,10 @@ export default function ProcessTimeline() {
         );
 
 
-        // Force a refresh after setup to ensure positions are calculated correctly
-        ScrollTrigger.refresh();
+        // Force a refresh after setup (with a delay to allow layout to settle)
+        setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 500);
 
     }, { scope: containerRef });
 
