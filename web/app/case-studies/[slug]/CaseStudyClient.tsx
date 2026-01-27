@@ -76,18 +76,18 @@ export default function CaseStudyClient({ slug }: CaseStudyClientProps) {
             <div className={`fixed top-0 right-0 w-[800px] h-[800px] bg-gradient-to-b ${gradientBg} rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-50`} />
 
             {/* Nav / Back - Pushed down to avoid overlap with global nav */}
-            <nav className="fixed top-24 left-0 w-full px-6 md:px-12 z-40 flex justify-between items-center pointer-events-none mix-blend-difference text-white">
+            <nav className="fixed top-24 left-0 w-full px-6 md:px-12 z-40 flex justify-between items-center pointer-events-none text-white">
                 <button
                     onClick={() => router.back()}
-                    className="pointer-events-auto group flex items-center gap-3 text-sm font-bold uppercase tracking-widest hover:text-white/70 transition-colors"
+                    className="pointer-events-auto group flex items-center gap-3 text-sm font-bold uppercase tracking-widest hover:text-white/70 transition-colors bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10"
                 >
                     <span className="group-hover:-translate-x-1 transition-transform">←</span> Go Back
                 </button>
-                <div className="text-xs font-mono opacity-50">{String(projectIndex + 1).padStart(2, '0')} / {portfolioData.projects.length}</div>
+                <div className="text-xs font-mono opacity-50 mix-blend-difference">{String(projectIndex + 1).padStart(2, '0')} / {portfolioData.projects.length}</div>
             </nav>
 
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20 px-6 md:px-24 max-w-[1600px] mx-auto z-10">
+            <section className="relative pt-32 md:pt-32 pb-12 md:pb-20 px-6 md:px-24 max-w-[1600px] mx-auto z-10">
 
                 {/* Header */}
                 <div className="mb-16 md:mb-24 relative">
@@ -125,11 +125,9 @@ export default function CaseStudyClient({ slug }: CaseStudyClientProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none" />
                 </div>
 
-                {/* Content Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
-
-                    {/* Left Rail: Sticky Context */}
-                    <div className="md:col-span-4 space-y-12 animate-sidebar h-full">
+                {/* Hero Stats / Summary */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-20 border-t border-zinc-200 pt-12 md:pt-20">
+                    <div className="md:col-span-4 animate-sidebar">
                         <div className="sticky top-32">
                             <h3 className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-8 border-b border-zinc-100 pb-4">
                                 Project Data
@@ -244,7 +242,7 @@ export default function CaseStudyClient({ slug }: CaseStudyClientProps) {
                                 />
                             </div>
                         ) : project.caseStudy.solution ? (
-                            <div className="scroll-reveal grid grid-cols-2 gap-4">
+                            <div className="scroll-reveal grid grid-cols-2 gap-4 mb-32">
                                 <div className="aspect-square bg-zinc-900 rounded-xl flex items-center justify-center shadow-lg">
                                     <span className="text-[10px] font-mono uppercase tracking-widest text-white/30">Dark Mode UI</span>
                                 </div>

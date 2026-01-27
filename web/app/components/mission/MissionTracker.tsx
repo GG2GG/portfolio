@@ -41,7 +41,7 @@ export default function MissionTracker({ progress, activeIndex }: MissionTracker
     }, [progress, rive, chargeInput, levelInput, progressInput]);
 
     return (
-        <div className="fixed right-8 bottom-8 z-50 flex flex-col items-center gap-2 pointer-events-none mix-blend-difference md:mix-blend-normal">
+        <div className="hidden md:flex fixed right-8 bottom-8 z-50 flex-col items-center gap-2 pointer-events-none mix-blend-difference md:mix-blend-normal">
             {/* Label */}
             <span className="text-[10px] font-mono uppercase tracking-widest text-white/50 bg-black/50 px-2 py-1 rounded backdrop-blur-md border border-white/10">
                 System Charge

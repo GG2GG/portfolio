@@ -201,7 +201,7 @@ export default function ProjectShowcase() {
             {/* 1. Header (Top) */}
             <div className="z-10 text-center">
                 <h2 className="text-5xl md:text-8xl font-black text-black tracking-tighter uppercase leading-[0.8] mb-2">
-                    Product<span className="text-zinc-300">Showcase</span>
+                    Product<br className="md:hidden" /><span className="text-zinc-300">Showcase</span>
                 </h2>
                 <p className="text-zinc-500 text-sm md:text-lg font-light uppercase tracking-widest">
                     Hover to explore

@@ -38,7 +38,7 @@ export default function FAQ() {
     };
 
     return (
-        <section id="faq-section" ref={containerRef} className="py-16 md:py-32 bg-zinc-50 relative z-10 w-full text-black border-t border-zinc-200">
+        <section id="faq-section" ref={containerRef} className="pt-24 pb-16 md:py-32 bg-zinc-50 relative z-10 w-full text-black border-t border-zinc-200">
             {/* Ambient Vertical Guide Lines (Subtle) */}
             <div className="absolute inset-0 pointer-events-none mx-auto max-w-7xl border-x border-zinc-100/50" />
 

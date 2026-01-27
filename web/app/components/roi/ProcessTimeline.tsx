@@ -91,13 +91,13 @@ export default function ProcessTimeline() {
         });
 
         // 3. Animate Start/End Caps
-        // Entropy (Start) - Chaotic dots converging
-        const chaosDots = gsap.utils.toArray('.chaos-dot');
-        gsap.to(chaosDots, {
-            x: 0,
-            y: 0,
+
+        // Singularity (Start) - Rings compress and particles snap in
+        gsap.to('.chaos-ring', {
+            scale: 0.5,
             opacity: 0,
-            scale: 0,
+            rotation: 180,
+            stagger: 0.1,
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: "top 80%",
@@ -106,20 +106,32 @@ export default function ProcessTimeline() {
             }
         });
 
-        // Infinity (End) - Pulse on reach
+        gsap.to('.chaos-dot', {
+            y: 0, // Snap to center
+            scale: 0, // Disappear into Singularity
+            opacity: 0,
+            duration: 1,
+            ease: "expo.in",
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top 80%",
+                end: "top 20%",
+                scrub: 1
+            }
+        });
+
+        // Hologram (End) - Expand to full size
         gsap.fromTo('.infinity-symbol',
-            { scale: 0.8, opacity: 0.5 },
+            { scale: 0.5, opacity: 0, rotateX: 90 }, // Start flat
             {
-                scale: 1.2,
+                scale: 1,
                 opacity: 1,
-                duration: 1.5,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
+                rotateX: 0, // Stand up 3D
+                duration: 2,
                 scrollTrigger: {
                     trigger: containerRef.current,
                     start: "bottom 80%",
-                    toggleActions: "play pause resume pause"
+                    toggleActions: "play none none reverse"
                 }
             }
         );
@@ -138,35 +150,43 @@ export default function ProcessTimeline() {
                 <div ref={lineRef} className="w-full bg-gradient-to-b from-[#ccff00] via-cyan-400 to-purple-500 shadow-[0_0_15px_rgba(204,255,0,0.5)]" style={{ height: '0%' }} />
             </div>
 
-            {/* --- START NODE: THE ORIGIN (Entropy) --- */}
+            {/* --- START NODE: THE ORIGIN (Data Singularity) --- */}
             <div className="absolute top-0 left-6 md:left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
                 {/* Label */}
                 <div className="mb-8 bg-black/5 backdrop-blur-sm border border-black/10 px-4 py-2 rounded-full">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">The Origin</span>
                 </div>
 
-                {/* Chaos Cloud (Visual only) */}
-                <div className="relative w-32 h-32 flex items-center justify-center">
-                    {/* Central Core */}
-                    <div className="w-4 h-4 bg-black rounded-full relative z-10 shadow-[0_0_20px_rgba(0,0,0,0.2)]" />
-                    <div className="absolute inset-0 border border-dashed border-zinc-300 rounded-full animate-spin-slow opacity-30" />
+                {/* Singularity Visual */}
+                <div className="relative w-40 h-40 flex items-center justify-center">
+                    {/* Core */}
+                    <div className="w-2 h-2 bg-black rounded-full relative z-20 shadow-[0_0_30px_rgba(0,0,0,0.8)]" />
 
-                    {/* Scattered Dots (Animated via GSAP to converge) */}
-                    {[...Array(12)].map((_, i) => (
+                    {/* Horizon Ring (Glow) */}
+                    <div className="absolute inset-0 rounded-full border border-zinc-900/10 shadow-[inset_0_0_20px_rgba(0,0,0,0.1)]" />
+
+                    {/* Accretion Disks (Animated Rings) */}
+                    <div className="chaos-ring absolute w-32 h-32 border border-zinc-400 rounded-full opacity-20 border-dashed animate-spin-slow" />
+                    <div className="chaos-ring absolute w-24 h-24 border border-zinc-600 rounded-full opacity-30 border-dotted animate-reverse-spin" />
+                    <div className="chaos-ring absolute w-16 h-16 border-2 border-black rounded-full opacity-10" />
+
+                    {/* Infalling Data Particles */}
+                    {[...Array(8)].map((_, i) => (
                         <div
                             key={i}
-                            className="chaos-dot absolute w-2 h-2 bg-zinc-400 rounded-full"
+                            className="chaos-dot absolute w-1 h-3 bg-gradient-to-b from-black to-transparent"
                             style={{
                                 left: '50%',
                                 top: '50%',
-                                transform: `translate(${Math.cos(i) * 60}px, ${Math.sin(i) * 60}px)`
+                                transformOrigin: 'center bottom',
+                                transform: `rotate(${i * 45}deg) translateY(-60px)`
                             }}
                         />
                     ))}
                 </div>
                 <div className="mt-4 text-center">
                     <h4 className="text-xl font-black uppercase text-black">Chaos</h4>
-                    <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Raw Problem Space</p>
+                    <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Unstructured Data</p>
                 </div>
             </div>
 
@@ -233,33 +253,33 @@ export default function ProcessTimeline() {
                 })}
             </div>
 
-            {/* --- END NODE: THE HORIZON (Infinity) --- */}
+            {/* --- END NODE: THE HORIZON (Holographic Construct) --- */}
             <div className="absolute bottom-0 left-6 md:left-1/2 -translate-x-1/2 translate-y-1/2 z-20 flex flex-col items-center">
                 <div className="mb-4 text-center">
                     <h4 className="text-xl font-black uppercase text-black">Impact</h4>
                     <p className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Continuous Growth</p>
                 </div>
 
-                {/* Infinity Symbol (Animated) */}
-                <div className="infinity-symbol relative w-24 h-12 text-black flex items-center justify-center">
-                    <svg viewBox="0 0 100 50" className="w-full h-full overflow-visible drop-shadow-[0_0_15px_rgba(204,255,0,0.6)]">
-                        <path
-                            d="M25,25m-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0 M75,25m-20,0a20,20 0 1,0 40,0a20,20 0 1,0 -40,0"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                            pathLength="1"
-                            className="opacity-20"
-                        />
-                        <path
-                            d="M25,25 Q45,25 50,25 Q55,25 75,25"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                            strokeLinecap="round"
-                        />
-                        <text x="50" y="28" textAnchor="middle" fontSize="30" fontWeight="bold" fill="currentColor">∞</text>
+                {/* Holographic Torus (CSS 3D Illusion) */}
+                <div className="infinity-symbol relative w-32 h-32 flex items-center justify-center perspective-[1000px]">
+
+                    {/* Outer Shell */}
+                    <div className="absolute inset-0 border border-black/20 rounded-full animate-[spin_8s_linear_infinite]" />
+                    <div className="absolute inset-2 border border-black/10 rounded-full animate-[spin_12s_linear_infinite_reverse]" />
+
+                    {/* Core Energy */}
+                    <div className="w-16 h-16 bg-[#ccff00]/20 rounded-full blur-xl animate-pulse" />
+
+                    {/* Wireframe Torus Representation (SVG) */}
+                    <svg viewBox="0 0 100 100" className="w-full h-full absolute animate-[spin_20s_linear_infinite]">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/30" />
+                        <ellipse cx="50" cy="50" rx="40" ry="10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/30" transform="rotate(45 50 50)" />
+                        <ellipse cx="50" cy="50" rx="40" ry="10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/30" transform="rotate(-45 50 50)" />
+                        <ellipse cx="50" cy="50" rx="40" ry="10" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-black/30" />
                     </svg>
+
+                    {/* Central Singularity Point */}
+                    <div className="w-2 h-2 bg-black rounded-full z-10 shadow-[0_0_20px_#ccff00]" />
                 </div>
 
                 {/* Badge */}

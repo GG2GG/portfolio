@@ -35,9 +35,26 @@ export default function ContactModal() {
         }
     }, [isOpen]);
 
-    const handleCopy = (text: string) => {
-        navigator.clipboard.writeText(text);
-        // Optional: Show toast or feedback
+    const [copiedPhone, setCopiedPhone] = useState(false);
+    const [copiedEmail, setCopiedEmail] = useState(false);
+
+    const handleCopy = (text: string, type: 'phone' | 'email') => {
+        if (!navigator?.clipboard) {
+            console.warn('Clipboard API not supported');
+            return;
+        }
+
+        navigator.clipboard.writeText(text).then(() => {
+            if (type === 'phone') {
+                setCopiedPhone(true);
+                setTimeout(() => setCopiedPhone(false), 2000);
+            } else {
+                setCopiedEmail(true);
+                setTimeout(() => setCopiedEmail(false), 2000);
+            }
+        }).catch(err => {
+            console.error('Failed to copy text: ', err);
+        });
     };
 
     if (!isOpen) return null;
@@ -73,10 +90,10 @@ export default function ContactModal() {
                             <span className="text-xl font-bold text-white tracking-tight">{portfolioData.contact.phone}</span>
                         </div>
                         <button
-                            onClick={() => handleCopy(portfolioData.contact.phone)}
-                            className="px-3 py-1 bg-zinc-800 rounded text-xs font-bold uppercase text-zinc-400 group-hover:bg-[#ccff00] group-hover:text-black transition-all"
+                            onClick={() => handleCopy(portfolioData.contact.phone, 'phone')}
+                            className={`px-3 py-1 rounded text-xs font-bold uppercase transition-all ${copiedPhone ? 'bg-[#ccff00] text-black' : 'bg-zinc-800 text-zinc-400 group-hover:bg-[#ccff00] group-hover:text-black'}`}
                         >
-                            Copy
+                            {copiedPhone ? 'Copied!' : 'Copy'}
                         </button>
                     </div>
 
@@ -87,10 +104,10 @@ export default function ContactModal() {
                             <span className="text-xl font-bold text-white tracking-tight break-all">{portfolioData.contact.email}</span>
                         </div>
                         <button
-                            onClick={() => handleCopy(portfolioData.contact.email)}
-                            className="px-3 py-1 bg-zinc-800 rounded text-xs font-bold uppercase text-zinc-400 group-hover:bg-[#ccff00] group-hover:text-black transition-all"
+                            onClick={() => handleCopy(portfolioData.contact.email, 'email')}
+                            className={`px-3 py-1 rounded text-xs font-bold uppercase transition-all ${copiedEmail ? 'bg-[#ccff00] text-black' : 'bg-zinc-800 text-zinc-400 group-hover:bg-[#ccff00] group-hover:text-black'}`}
                         >
-                            Copy
+                            {copiedEmail ? 'Copied!' : 'Copy'}
                         </button>
                     </div>
                 </div>

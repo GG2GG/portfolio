@@ -23,7 +23,7 @@ export default function ServicesPage() {
 
             {/* 2. Bio & Personal Grid */}
             <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-900">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-12 md:gap-16">
 
                     {/* Text Column */}
                     <div className="space-y-12">
@@ -46,7 +46,7 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Image Column */}
-                    <div className="relative w-full h-[600px] bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800">
+                    <div className="relative w-full h-[400px] md:h-[600px] bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800">
                         {/* Placeholder for Profile / Candid Shot */}
                         {/* Profile Image */}
                         <div className="absolute inset-0">
