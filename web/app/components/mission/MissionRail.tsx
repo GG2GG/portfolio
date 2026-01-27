@@ -116,26 +116,29 @@ export default function MissionRail({ mission, index, total, isActive }: Mission
 
 
             {/* Bottom: HUD Meta Grid */}
-            <div className="relative z-10 flex flex-col gap-6 mt-auto">
-                <div className="rail-meta">
-                    <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block mb-1">Status</span>
-                    <div className="flex items-center gap-3">
-                        {/* Radar Status Icon */}
-                        <div className="relative w-4 h-4 flex items-center justify-center">
-                            <span className={`absolute inset-0 rounded-full border border-[#ccff00] ${mission.status === 'Active' ? 'animate-ping' : 'opacity-0'}`} />
-                            <span className={`relative w-2 h-2 rounded-full ${mission.status === 'Active' ? 'bg-[#ccff00] shadow-[0_0_10px_#ccff00]' : 'bg-zinc-500'}`} />
+            <div className="relative z-10 mt-auto">
+                <div className="flex items-center justify-between gap-4">
+                    <div className="rail-meta">
+                        <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block mb-1">Status</span>
+                        <div className="flex items-center gap-3">
+                            {/* Radar Status Icon */}
+                            <div className="relative w-4 h-4 flex items-center justify-center">
+                                <span className={`absolute inset-0 rounded-full border border-[#ccff00] ${mission.status === 'Active' ? 'animate-ping' : 'opacity-0'}`} />
+                                <span className={`relative w-2 h-2 rounded-full ${mission.status === 'Active' ? 'bg-[#ccff00] shadow-[0_0_10px_#ccff00]' : 'bg-zinc-500'}`} />
+                            </div>
+                            <span className="text-xl font-bold text-white uppercase tracking-tight">{mission.status}</span>
                         </div>
-                        <span className="text-xl font-bold text-white uppercase tracking-tight">{mission.status}</span>
+                    </div>
+
+                    <div className="rail-meta text-right">
+                        <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block mb-1">Role</span>
+                        <span className="text-xl font-bold text-white uppercase tracking-tight drop-shadow-md">Lead</span>
                     </div>
                 </div>
-
-                <div className="rail-meta">
-                    <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest block mb-1">Role</span>
-                    <span className="text-xl font-bold text-white uppercase tracking-tight drop-shadow-md">Lead</span>
-                </div>
-
-
             </div>
+
+
         </div>
+        </div >
     );
 }
