@@ -136,7 +136,7 @@ export default function ProcessTimeline() {
     }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="w-full max-w-7xl mx-auto mt-24 mb-32 relative min-h-[1600px] pt-32 pb-32">
+        <div ref={containerRef} className="w-full max-w-7xl mx-auto mt-24 mb-32 relative min-h-[1600px] pt-32 pb-32 overflow-hidden">
             {/* Ambient Background Glows */}
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
             <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
