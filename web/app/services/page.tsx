@@ -22,44 +22,43 @@ export default function ServicesPage() {
             </section>
 
             {/* 2. Bio & Personal Grid */}
-            <section className="relative w-full max-w-7xl mx-auto px-4 md:px-12 py-12 md:py-20 border-t border-zinc-900">
-                <div className="grid grid-cols-2 gap-6 md:gap-16">
+            <section className="relative w-full max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-20 border-t border-zinc-900">
+                <div className="flex flex-col gap-16">
 
-                    {/* Text Column */}
-                    <div className="space-y-12">
-                        <div>
-                            <h2 className="text-sm font-mono font-bold uppercase tracking-widest text-[#ccff00] mb-4">The Origin Story</h2>
-                            <p className="text-zinc-300 leading-8 text-lg">
-                                My journey began not in a computer lab, but understanding how things work. From engineering systems at college, participating in Japanese Robotics research to architecting SaaS products & AI Developments, the drive has always been the same: <strong className="text-white">Curiosity.</strong>
-                            </p>
-                            <p className="text-zinc-300 leading-8 text-lg mt-4">
-                                Today, I act as a bridge. A bridge between the abstract world of AI research and the tangible reality of user needs. I speak fluent Engineer, Product, and Design, allowing me to eliminate the friction that typically kills innovation.
-                            </p>
-                        </div>
-
-                        <div>
-                            <h2 className="text-sm font-mono font-bold uppercase tracking-widest text-[#ccff00] mb-4">Philosophy</h2>
-                            <blockquote className="text-3xl font-black leading-tight text-white">
-                                &quot;Complexity should be internal. Simplicity should be external.&quot;
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    {/* Image Column */}
-                    <div className="relative w-full h-[400px] md:h-[600px] bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800">
-                        {/* Placeholder for Profile / Candid Shot */}
-                        {/* Profile Image */}
+                    {/* Image Column (First) */}
+                    <div className="relative w-full h-[300px] md:h-[400px] bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800">
+                        {/* Profile Image - Cropped View */}
                         <div className="absolute inset-0">
                             <Image
                                 src={getAssetPath("/assets/profile.png")}
                                 alt="Gautham Ganesh Profile"
                                 fill
-                                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
                                 priority
                             />
                         </div>
                         {/* Overlay Gradient */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    </div>
+
+                    {/* Text Column (Second) */}
+                    <div className="space-y-12 text-center md:text-left">
+                        <div>
+                            <h2 className="text-sm font-mono font-bold uppercase tracking-widest text-[#ccff00] mb-6">The Origin Story</h2>
+                            <p className="text-zinc-300 leading-relaxed text-lg md:text-xl">
+                                My journey began not in a computer lab, but understanding how things work. From engineering systems at college, participating in Japanese Robotics research to architecting SaaS products & AI Developments, the drive has always been the same: <strong className="text-white">Curiosity.</strong>
+                            </p>
+                            <p className="text-zinc-300 leading-relaxed text-lg md:text-xl mt-6">
+                                Today, I act as a bridge. A bridge between the abstract world of AI research and the tangible reality of user needs. I speak fluent Engineer, Product, and Design, allowing me to eliminate the friction that typically kills innovation.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h2 className="text-sm font-mono font-bold uppercase tracking-widest text-[#ccff00] mb-6">Philosophy</h2>
+                            <blockquote className="text-2xl md:text-4xl font-black leading-tight text-white">
+                                &quot;Complexity should be internal. Simplicity should be external.&quot;
+                            </blockquote>
+                        </div>
                     </div>
 
                 </div>
