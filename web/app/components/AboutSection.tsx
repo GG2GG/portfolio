@@ -31,16 +31,9 @@ export default function AboutSection() {
                     <h2 className="about-text text-5xl md:text-7xl font-black uppercase tracking-tighter text-center md:text-left">
                         Who I Am
                     </h2>
-                    <div className="about-text space-y-8 text-xl md:text-2xl leading-relaxed text-gray-700 font-medium text-center md:text-left">
-                        <p>{portfolioData.about.description}</p>
-                        <p>
-                            I specialize in building digital experiences that merge technical precision with aesthetic fluidity.
-                            My work is defined by a commitment to performance, accessibility, and pixel-perfect execution.
-                        </p>
-                    </div>
 
-                    {/* Skills Grid */}
-                    <div className="about-text pt-8 flex flex-col items-center md:items-start">
+                    {/* Skills Grid - Move Up for Mobile impact */}
+                    <div className="about-text flex flex-col items-center md:items-start">
                         <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-4">Core Competencies</h3>
                         <div className="flex flex-wrap justify-center md:justify-start gap-2">
                             {portfolioData.about.skills.map(skill => (
@@ -49,6 +42,14 @@ export default function AboutSection() {
                                 </span>
                             ))}
                         </div>
+                    </div>
+
+                    <div className="about-text space-y-8 text-xl md:text-2xl leading-relaxed text-gray-700 font-medium text-center md:text-left">
+                        <p>{portfolioData.about.description}</p>
+                        <p>
+                            I specialize in building digital experiences that merge technical precision with aesthetic fluidity.
+                            My work is defined by a commitment to performance, accessibility, and pixel-perfect execution.
+                        </p>
                     </div>
                 </div>
 
