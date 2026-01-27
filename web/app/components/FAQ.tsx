@@ -42,9 +42,9 @@ export default function FAQ() {
             {/* Ambient Vertical Guide Lines (Subtle) */}
             <div className="absolute inset-0 pointer-events-none mx-auto max-w-7xl border-x border-zinc-100/50" />
 
-            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-                {/* Tech Separator Badge */}
-                <div className="absolute -top-[13px] left-1/2 -translate-x-1/2 bg-zinc-50 px-6 flex items-center gap-3">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 pt-2 md:pt-0">
+                {/* Tech Separator Badge - Hidden on mobile */}
+                <div className="hidden md:flex absolute -top-[13px] left-1/2 -translate-x-1/2 bg-zinc-50 px-6 items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
                     <span className="font-mono text-[10px] tracking-[0.3em] font-bold text-zinc-400 uppercase">
                         System Inquiries
@@ -52,7 +52,7 @@ export default function FAQ() {
                     <div className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
                 </div>
                 {/* Header */}
-                <div className="mt-16 mb-20 text-center">
+                <div className="mt-4 md:mt-16 mb-20 text-center">
                     <h2 className="text-4xl md:text-6xl font-black text-black tracking-tighter uppercase mb-6">
                         Frequently Asked
                     </h2>
