@@ -86,10 +86,22 @@ export default function Hero({ startAnimation = true }: HeroProps) {
                 </div>
 
                 {/* Tagline - Absolute Bottom */}
-                <div className="absolute bottom-12 left-0 w-full text-center z-20 pointer-events-none mix-blend-difference">
-                    <SplitText className="text-sm md:text-base font-mono text-white tracking-wider uppercase opacity-80 hero-tagline">
+                {/* Tagline & Scroll Indicator - Absolute Bottom */}
+                <div className="absolute bottom-12 left-0 w-full flex flex-col items-center gap-6 z-20 pointer-events-none mix-blend-difference">
+                    <SplitText className="text-lg md:text-2xl font-mono text-white tracking-wider uppercase opacity-90 hero-tagline">
                         {portfolioData.hero.tagline}
                     </SplitText>
+
+                    {/* Scroll Down Arrows */}
+                    <div className="flex flex-col items-center gap-1 opacity-60">
+                        {[...Array(3)].map((_, i) => (
+                            <div
+                                key={i}
+                                className="w-4 h-4 border-b-2 border-r-2 border-white transform rotate-45 animate-pulse"
+                                style={{ animationDelay: `${i * 0.2}s` }}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
