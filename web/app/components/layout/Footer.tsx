@@ -126,7 +126,7 @@ export default function Footer() {
                 <div className="relative w-full max-w-7xl mx-auto flex flex-col items-center justify-start pt-32 md:pt-20 mb-2 text-center">
 
                     {/* Big Text Layer (Relative Flow) */}
-                    <div className="footer-text relative w-full flex flex-col items-center justify-center text-center z-0 pointer-events-none select-none mb-12 transition-all duration-1000">
+                    <div className="footer-text relative w-full flex flex-col items-center justify-center text-center z-0 pointer-events-none select-none mb-2 transition-all duration-1000">
                         <h2 className="flex flex-col items-center leading-none">
                             <span className="text-[10vw] md:text-[8vw] font-anton uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-zinc-400 to-zinc-700">
                                 ALWAYS BUILDING
