@@ -22,8 +22,8 @@ export default function ServicesPage() {
             </section>
 
             {/* 2. Bio & Personal Grid */}
-            <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 py-20 border-t border-zinc-900">
-                <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-12 md:gap-16">
+            <section className="relative w-full max-w-7xl mx-auto px-4 md:px-12 py-12 md:py-20 border-t border-zinc-900">
+                <div className="grid grid-cols-2 gap-6 md:gap-16">
 
                     {/* Text Column */}
                     <div className="space-y-12">

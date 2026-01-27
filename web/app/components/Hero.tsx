@@ -69,7 +69,7 @@ export default function Hero({ startAnimation = true }: HeroProps) {
                 </div>
 
                 {/* Content Layer */}
-                <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-white hero-text pointer-events-none mix-blend-difference">
+                <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-center text-white hero-text pointer-events-none mix-blend-difference">
                     <div className="overflow-hidden">
                         <h1 className="hero-line text-6xl md:text-[10rem] font-black uppercase leading-none tracking-tighter">
                             <SplitText>{portfolioData.hero.title}</SplitText>
