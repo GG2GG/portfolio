@@ -9,10 +9,14 @@ import { missions } from '@/lib/missions';
 export default function AIModeView() {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const { experience, ...restContent } = portfolioData;
+    const { experience, about, ...restContent } = portfolioData;
 
     const fullData = {
         ...restContent,
+        about: {
+            ...about,
+            description: "I build digital experiences that merge Technical Precision with Aesthetic Fluidity. My work is defined by a commitment to Performance, Accessibility, and Pixel-Perfect Execution."
+        },
         experience: missions
     };
 
