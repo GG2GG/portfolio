@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Permanent_Marker, Anton } from "next/font/google"; // Added Anton
 import ClientLayout from "./components/layout/ClientLayout";
+import GoogleAnalytics from "./components/layout/GoogleAnalytics";
 import Navbar from "./components/layout/Navbar"; // Keep for type safety if needed, or remove if unused
 import SmoothScroll from "./components/ui/SmoothScroll";
 import "./globals.css";
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} ${anton.variable} antialiased`}
       >
+        <GoogleAnalytics />
         <SmoothScroll>
           <ClientLayout>
             {children}
